@@ -70,7 +70,7 @@ ga('send', 'pageview');
 <aside class="widget">
 		<h3 class="widget-title">归档</h3>		
 		<ul>
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li></ul>
 		</ul>
 	</aside>
 
@@ -83,6 +83,10 @@ ga('send', 'pageview');
 			
           <li>
             <a href="/2017/10/23/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/20/dijkstra单源最短路（热浪codevs1557）/">(no title)</a>
           </li>
         
 		</ul>
@@ -134,6 +138,50 @@ ga('send', 'pageview');
 
     <span class="eye font-asesome-icon" >
          <span id="/2017/10/23/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+        
+        </span>
+    </span>
+
+		</footer><!-- .entry-footer -->
+</article>
+<div class="misc">
+    <a href="#main"><span class="top font-asesome-icon">Top</span></a>
+</div>
+  
+    
+<article class="hentry ">
+		
+		
+		<!-- .entry-header -->
+		<div class="entry-content">
+			
+				<h2 id="题目描述-Description"><a href="#题目描述-Description" class="headerlink" title="题目描述 Description"></a>题目描述 Description</h2><p>德克萨斯纯朴的民眾们这个夏天正在遭受巨大的热浪！！！他们的德克萨斯长角牛吃起来不错，可是他们并不是很擅长生產富含奶油的乳製品。Farmer John此时以先天下之忧而忧，后天下之乐而乐的精神，身先士卒地承担起向德克萨斯运送大量的营养冰凉的牛奶的重任，以减轻德克萨斯人忍受酷暑的痛苦。</p>
+<p>FJ已经研究过可以把牛奶从威斯康星运送到德克萨斯州的路线。这些路线包括起始点和终点先一共经过T <strong>(1 &lt;= T &lt;= 2,500)</strong>个城镇，方便地标号為1到<strong>T</strong>。除了起点和终点外地每个城镇由两条双向道路连向至少两个其它地城镇。每条道路有一个通过费用（包括油费，过路费等等）。</p>
+<p>给定一个地图，包含C<strong> (1 &lt;= C &lt;= 6,200)</strong>条直接连接2个城镇的道路。每条道路由道路的起点Rs，终点Re <strong>(1 &lt;= Rs &lt;= T; 1 &lt;= Re &lt;= T)</strong>，和花费<strong>(1 &lt;= Ci &lt;= 1,000)</strong>组成。求从起始的城镇Ts <strong>(1 &lt;= Ts &lt;= T)</strong>到终点的城镇Te<strong>(1 &lt;= Te &lt;= T)</strong>最小的总费用。</p>
+<h4 id="输入描述-Input-Description"><a href="#输入描述-Input-Description" class="headerlink" title="输入描述 Input Description"></a>输入描述 Input Description</h4><p>第一行: 4个由空格隔开的整数: T, C, Ts, Te</p>
+<p>第2到第C+1行: 第i+1行描述第i条道路。有3个由空格隔开的整数: Rs, Re和Ci</p>
+<p>输出描述 Output Description<br>一个单独的整数表示从Ts到Te的最小总费用。数据保证至少存在一条道路。</p>
+<h4 id="样例输入-Sample-Input"><a href="#样例输入-Sample-Input" class="headerlink" title="样例输入 Sample Input"></a>样例输入 Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">7 11 5 4</div><div class="line"></div><div class="line">2 4 2</div><div class="line"></div><div class="line">1 4 3</div><div class="line"></div><div class="line">7 2 2</div><div class="line"></div><div class="line">3 4 3</div><div class="line"></div><div class="line">5 7 5</div><div class="line"></div><div class="line">7 3 3</div><div class="line"></div><div class="line">6 1 1</div><div class="line"></div><div class="line">6 3 4</div><div class="line"></div><div class="line">2 4 3</div><div class="line"></div><div class="line">5 6 3</div><div class="line"></div><div class="line">7 2 1</div></pre></td></tr></table></figure>
+<h4 id="样例输出-Sample-Output"><a href="#样例输出-Sample-Output" class="headerlink" title="样例输出 Sample Output"></a>样例输出 Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">7</div></pre></td></tr></table></figure>
+<h4 id="数据范围及提示-Data-Size-amp"><a href="#数据范围及提示-Data-Size-amp" class="headerlink" title="数据范围及提示 Data Size &amp;"></a>数据范围及提示 Data Size &amp;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hint</div><div class="line">5-&gt;6-&gt;1-&gt;4 (3 + 1 + 3)</div></pre></td></tr></table></figure>
+<p>本题是一道单源最短路<strong>Dijkstra</strong>算法的模板题，让我们一起探讨吧！<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">2500</span> + <span class="number">5</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXM = <span class="number">12400</span> + <span class="number">5</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3</span>;</div><div class="line"><span class="keyword">int</span> head[MAXN], dist[MAXN],  n, m, num, start, end;</div><div class="line"><span class="comment">//head数组记录存的是在这条边被加入之前的最后一条边（边表的一端）；</span></div><div class="line"><span class="comment">//dist数组储存起点到这个点的距离</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> from, to, next, w;</div><div class="line">&#125;edge[MAXM];</div><div class="line"><span class="comment">//用于建图</span></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> w)</span> </span>&#123;</div><div class="line">	edge[++num].from = from;</div><div class="line">	edge[num].to = to;</div><div class="line">	edge[num].w = w;</div><div class="line">	edge[num].next = head[from];</div><div class="line">    <span class="comment">//next存上一条边（整条边）</span></div><div class="line">	head[from] = num;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Dist</span> &#123;</span></div><div class="line">	<span class="keyword">int</span> x, dist;</div><div class="line">	Dist(<span class="keyword">int</span> x = <span class="number">0</span>, <span class="keyword">int</span> dist = inf) : x(x), dist(dist) &#123;&#125;</div><div class="line">    <span class="comment">//结构体初始化</span></div><div class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">(Dist l, Dist r)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> l.dist &lt; r.dist;</div><div class="line">	&#125;</div><div class="line">    <span class="comment">//重载运算符：按从小到大排序；</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">priority_queue &lt;Dist, <span class="built_in">vector</span>&lt;Dist&gt;, Dist&gt; que;</div><div class="line"><span class="comment">//建立一个以Dist为元素的不定长数组；</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) dist[i] = inf;</div><div class="line">	dist[start] = <span class="number">0</span>;</div><div class="line">	que.push(Dist(start, <span class="number">0</span>));</div><div class="line">    <span class="comment">//初始化操作；</span></div><div class="line">	<span class="keyword">while</span>(!que.empty()) &#123;</div><div class="line">    <span class="comment">//while(!que.empty())  如果队列为空返回一  取非之后返回零；也就是说当队列不为空时；</span></div><div class="line">		Dist tmp = que.top();</div><div class="line">		que.pop();</div><div class="line">		<span class="keyword">if</span>(tmp.dist != dist[tmp.x]) <span class="keyword">continue</span>;</div><div class="line">       <span class="comment">//因为队列里面的数是不断更新的，如果不等于，说明这个点比较旧了，然而我们需要的其实是最新的点，所以就把它continue掉；</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = head[tmp.x]; j != <span class="number">-1</span>; j = edge[j].next) &#123;</div><div class="line">			<span class="keyword">if</span>(dist[edge[j].to] &gt; dist[tmp.x] + edge[j].w) &#123;</div><div class="line">				dist[edge[j].to] = dist[tmp.x] + edge[j].w;</div><div class="line">				que.push(Dist(edge[j].to, dist[edge[j].to]));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">        <span class="comment">//遍历求距；</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> dist[end];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;n, &amp;m, &amp;start, &amp;end);</div><div class="line">	<span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(head));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</div><div class="line">		<span class="keyword">int</span> x, y, z;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</div><div class="line">		add_edge(x, y, z);</div><div class="line">		add_edge(y, x, z);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, dijkstra());</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<pre><code>2017.10.15
+</code></pre>
+			
+		</div><!-- .entry-content -->
+		
+		
+		<footer class="entry-footer">
+			<span class="posted-on font-asesome-icon">
+	<a href="" rel="bookmark">
+	<time class="updated" datetime="2017-10-20T00:38:52.224Z">2017-10-20</time>
+	</a>
+</span>
+
+		
+
+    <span class="eye font-asesome-icon" >
+         <span id="/2017/10/20/dijkstra单源最短路（热浪codevs1557）/" class="leancloud_visitors" data-flag-title="">
         
         </span>
     </span>
