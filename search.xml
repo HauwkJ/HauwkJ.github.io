@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>/2017/10/23/hello-world/</url>
+      <url>/2017/10/25/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
@@ -21,7 +21,7 @@
     
     <entry>
       <title></title>
-      <url>/2017/10/20/dijkstra%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%EF%BC%88%E7%83%AD%E6%B5%AAcodevs1557%EF%BC%89/</url>
+      <url>/2017/10/25/dijkstra%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%EF%BC%88%E7%83%AD%E6%B5%AAcodevs1557%EF%BC%89/</url>
       <content type="html"><![CDATA[<h2 id="题目描述-Description"><a href="#题目描述-Description" class="headerlink" title="题目描述 Description"></a>题目描述 Description</h2><p>德克萨斯纯朴的民眾们这个夏天正在遭受巨大的热浪！！！他们的德克萨斯长角牛吃起来不错，可是他们并不是很擅长生產富含奶油的乳製品。Farmer John此时以先天下之忧而忧，后天下之乐而乐的精神，身先士卒地承担起向德克萨斯运送大量的营养冰凉的牛奶的重任，以减轻德克萨斯人忍受酷暑的痛苦。</p>
 <p>FJ已经研究过可以把牛奶从威斯康星运送到德克萨斯州的路线。这些路线包括起始点和终点先一共经过T <strong>(1 &lt;= T &lt;= 2,500)</strong>个城镇，方便地标号為1到<strong>T</strong>。除了起点和终点外地每个城镇由两条双向道路连向至少两个其它地城镇。每条道路有一个通过费用（包括油费，过路费等等）。</p>
 <p>给定一个地图，包含C<strong> (1 &lt;= C &lt;= 6,200)</strong>条直接连接2个城镇的道路。每条道路由道路的起点Rs，终点Re <strong>(1 &lt;= Rs &lt;= T; 1 &lt;= Re &lt;= T)</strong>，和花费<strong>(1 &lt;= Ci &lt;= 1,000)</strong>组成。求从起始的城镇Ts <strong>(1 &lt;= Ts &lt;= T)</strong>到终点的城镇Te<strong>(1 &lt;= Te &lt;= T)</strong>最小的总费用。</p>
