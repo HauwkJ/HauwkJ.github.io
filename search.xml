@@ -9,6 +9,7 @@
 <p>title:[codevs 1557] Dijkstra<br>date:2017-10-15<br>categories:OI<br>author:Hauwk<br>tags:- OI</p>
 <pre><code>- 图论
 </code></pre><h2 id="permalink-http-codevs-cn-problem-1557"><a href="#permalink-http-codevs-cn-problem-1557" class="headerlink" title="permalink:http://codevs.cn/problem/1557/"></a>permalink:<a href="http://codevs.cn/problem/1557/" target="_blank" rel="external">http://codevs.cn/problem/1557/</a></h2><p>   德克萨斯纯朴的民眾们这个夏天正在遭受巨大的热浪！！！他们的德克萨斯长角牛吃起来不错，可是他们并不是很擅长生產富含奶油的乳製品。Farmer John此时以先天下之忧而忧，后天下之乐而乐的精神，身先士卒地承担起向德克萨斯运送大量的营养冰凉的牛奶的重任，以减轻德克萨斯人忍受酷暑的痛苦。</p>
+<a id="more"></a>
 <p>FJ已经研究过可以把牛奶从威斯康星运送到德克萨斯州的路线。这些路线包括起始点和终点先一共经过T <strong>(1 &lt;= T &lt;= 2,500)</strong>个城镇，方便地标号為1到<strong>T</strong>。除了起点和终点外地每个城镇由两条双向道路连向至少两个其它地城镇。每条道路有一个通过费用（包括油费，过路费等等）。</p>
 <p>给定一个地图，包含C<strong> (1 &lt;= C &lt;= 6,200)</strong>条直接连接2个城镇的道路。每条道路由道路的起点Rs，终点Re <strong>(1 &lt;= Rs &lt;= T; 1 &lt;= Re &lt;= T)</strong>，和花费<strong>(1 &lt;= Ci &lt;= 1,000)</strong>组成。求从起始的城镇Ts <strong>(1 &lt;= Ts &lt;= T)</strong>到终点的城镇Te<strong>(1 &lt;= Te &lt;= T)</strong>最小的总费用。</p>
 <h4 id="输入描述-Input-Description"><a href="#输入描述-Input-Description" class="headerlink" title="输入描述 Input Description"></a>输入描述 Input Description</h4><p>第一行: 4个由空格隔开的整数:<code>T, C, Ts, Te</code></p>
