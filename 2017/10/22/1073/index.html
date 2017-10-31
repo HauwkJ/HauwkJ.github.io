@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="题目链接   农民约翰被选为他们镇的镇长！他其中一个竞选承诺就是在镇上建立起互联网，并连接到所有的农场。当然，他需要你的帮助。 约翰已经给他的农场安排了一条高速的网络线路，他想把这条线路共享给其他农场。为了使花费最少，他想铺设最短的光纤去连接所有的农场。 你将得到一份各农场之间连接费用的列表，你必须找出能连接所有农场并所用光纤最短的方案。 每两个农场间的距离不会超过100000">
+<meta name="description" content="题目链接 若某个家族人员过于庞大，要判断两个是否是亲戚，确实还很不容易，现在给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。 规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。">
 <meta name="keywords" content="OI - 图论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「codevs1078」Kruskal">
-<meta property="og:url" content="https://hauwkj.github.io/2017/10/17/1078/index.html">
+<meta property="og:title" content="「codevs1073」并查集">
+<meta property="og:url" content="https://hauwkj.github.io/2017/10/22/1073/index.html">
 <meta property="og:site_name" content="Hauwk&#39;s Blog">
-<meta property="og:description" content="题目链接   农民约翰被选为他们镇的镇长！他其中一个竞选承诺就是在镇上建立起互联网，并连接到所有的农场。当然，他需要你的帮助。 约翰已经给他的农场安排了一条高速的网络线路，他想把这条线路共享给其他农场。为了使花费最少，他想铺设最短的光纤去连接所有的农场。 你将得到一份各农场之间连接费用的列表，你必须找出能连接所有农场并所用光纤最短的方案。 每两个农场间的距离不会超过100000">
+<meta property="og:description" content="题目链接 若某个家族人员过于庞大，要判断两个是否是亲戚，确实还很不容易，现在给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。 规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-31T12:26:08.956Z">
+<meta property="og:updated_time" content="2017-10-31T12:26:53.306Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「codevs1078」Kruskal">
-<meta name="twitter:description" content="题目链接   农民约翰被选为他们镇的镇长！他其中一个竞选承诺就是在镇上建立起互联网，并连接到所有的农场。当然，他需要你的帮助。 约翰已经给他的农场安排了一条高速的网络线路，他想把这条线路共享给其他农场。为了使花费最少，他想铺设最短的光纤去连接所有的农场。 你将得到一份各农场之间连接费用的列表，你必须找出能连接所有农场并所用光纤最短的方案。 每两个农场间的距离不会超过100000">
+<meta name="twitter:title" content="「codevs1073」并查集">
+<meta name="twitter:description" content="题目链接 若某个家族人员过于庞大，要判断两个是否是亲戚，确实还很不容易，现在给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。 规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hauwkj.github.io/2017/10/17/1078/"/>
+  <link rel="canonical" href="https://hauwkj.github.io/2017/10/22/1073/"/>
 
 
 
 
 
-  <title>「codevs1078」Kruskal | Hauwk's Blog</title>
+  <title>「codevs1073」并查集 | Hauwk's Blog</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2017/10/17/1078/">
+    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2017/10/22/1073/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hauwk">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">「codevs1078」Kruskal</h1>
+          <h1 class="post-title" itemprop="name headline">「codevs1073」并查集</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T00:00:00+08:00">
-                2017-10-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T00:00:00+08:00">
+                2017-10-22
               </time>
             
 
@@ -322,15 +322,14 @@
       
 
       
-        <p><a href="http://codevs.cn/problem/1078/" target="_blank" rel="external">题目链接</a></p>
-<p>  农民约翰被选为他们镇的镇长！他其中一个竞选承诺就是在镇上建立起互联网，并连接到所有的农场。当然，他需要你的帮助。 约翰已经给他的农场安排了一条高速的网络线路，他想把这条线路共享给其他农场。为了使花费最少，他想铺设最短的光纤去连接所有的农场。 你将得到一份各农场之间连接费用的列表，你必须找出能连接所有农场并所用光纤最短的方案。 每两个农场间的距离不会超过100000</p>
+        <p><a href="http://codevs.cn/problem/1073/" target="_blank" rel="external">题目链接</a></p>
+<p>若某个家族人员过于庞大，要判断两个是否是亲戚，确实还很不容易，现在给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。 规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。</p>
 <a id="more"></a>
-<h4 id="输入描述-Input-Description"><a href="#输入描述-Input-Description" class="headerlink" title="输入描述 Input Description"></a>输入描述 Input Description</h4><p>第一行： 农场的个数，<strong>N（3&lt;=N&lt;=100）</strong>。</p>
-<p>第二行..结尾: 接下来的行包含了一个N*N的矩阵,表示每个农场之间的距离。理论上，他们是N行，每行由N个用空格分隔的数组成，实际上，他们每行限制在80个字符以内，因此，某些行会紧接着另一些行。当然，对角线将会是0，因为线路从第i个农场到它本身的距离在本题中没有意义。</p>
-<h4 id="输出描述-Output-Description"><a href="#输出描述-Output-Description" class="headerlink" title="输出描述 Output Description"></a>输出描述 Output Description</h4><p>只有一个输出，是连接到每个农场的光纤的最小长度和。</p>
-<h4 id="样例输入-Sample-Input"><a href="#样例输入-Sample-Input" class="headerlink" title="样例输入 Sample Input"></a>样例输入 Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">4</div><div class="line"></div><div class="line">0  4  9 21</div><div class="line"></div><div class="line">4  0  8 17</div><div class="line"></div><div class="line">9  8  0 16</div><div class="line"></div><div class="line">21 17 16  0</div></pre></td></tr></table></figure>
-<h4 id="样例输出-Sample-Output"><a href="#样例输出-Sample-Output" class="headerlink" title="样例输出 Sample Output"></a>样例输出 Sample Output</h4><pre><code>28
-</code></pre><p>这是一道最小生成树模板题，最小生成树算法的巧妙之处在于它使用了<strong>并查集</strong>和<strong>贪心</strong>的相关知识；首先我们将边读入，然后呢，将编权从小到大排序；按照边权从小到大的顺序依次加边，每加入一条边，将其两端点加入并查集内，直到所有的边都加入并查集内时，最小生成树便生成了！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line"></div><div class="line">#define DEBUG(x) std::cerr &lt;&lt; #x &lt;&lt; &quot;=&quot; &lt;&lt; x &lt;&lt; std::endl</div><div class="line">//用于debug的一个操作，可忽略；</div><div class="line">const int MAXN = 100 + 1;</div><div class="line"></div><div class="line">int n, m;</div><div class="line">struct Edge &#123;</div><div class="line">	int s, t, w;</div><div class="line">&#125; edge[MAXN * MAXN];</div><div class="line"></div><div class="line">bool cmp(Edge a, Edge b) &#123;</div><div class="line">	return a.w &lt; b.w;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int father[MAXN];</div><div class="line">int find(int x) &#123;</div><div class="line">	return x == father[x] ? x : father[x] = find(father[x]);</div><div class="line">&#125;</div><div class="line">//并查集find操作；</div><div class="line">int kruskal() &#123;</div><div class="line">	int res = 0;</div><div class="line">    //res用于存最小总权值；</div><div class="line">	for (int i = 1; i &lt;= n; i++) father[i] = i;</div><div class="line">    //并查集初始化；</div><div class="line">	std::sort(edge + 1, edge + m + 1, cmp);</div><div class="line">    //将边权排序；</div><div class="line">	for (int i = 1; i &lt;= m; i++) &#123;</div><div class="line">		int fx = find(edge[i].s), fy = find(edge[i].t);</div><div class="line">		if (fx != fy) &#123;</div><div class="line">			father[fx] = fy;</div><div class="line">			res += edge[i].w;</div><div class="line">		&#125;</div><div class="line">        //将边加入；</div><div class="line">	&#125;</div><div class="line">	return res;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, char *argv[]) &#123;</div><div class="line">	scanf(&quot;%d&quot;, &amp;n);</div><div class="line">	for (int i = 1; i &lt;= n; i++) &#123;</div><div class="line">		for (int j = 1; j &lt;= n; j++) &#123;</div><div class="line">			edge[++m].s = i, edge[m].t = j;</div><div class="line">			scanf(&quot;%d&quot;, &amp;edge[m].w);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	printf(&quot;%d\n&quot;, kruskal());</div><div class="line">			</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="输入描述-Input-Description"><a href="#输入描述-Input-Description" class="headerlink" title="输入描述 Input Description"></a>输入描述 Input Description</h4><p>第一行：三个整数<strong>n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000）</strong>，分别表示有n个人，m个亲戚关系，询问p对亲戚关系。 以下m行：每行两个数Mi，Mj，<strong>1&lt;=Mi，Mj&lt;=N</strong>，表示Ai和Bi具有亲戚关系。 接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。</p>
+<h4 id="输出描述-Output-Description"><a href="#输出描述-Output-Description" class="headerlink" title="输出描述 Output Description"></a>输出描述 Output Description</h4><p>P行，每行一个’Yes’或’No’。表示第i个询问的答案为“具有”或“不具有”亲戚关系。</p>
+<h4 id="样例输入-Sample-Input"><a href="#样例输入-Sample-Input" class="headerlink" title="样例输入 Sample Input"></a>样例输入 Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">6 5 3</div><div class="line"></div><div class="line">1 2</div><div class="line"></div><div class="line">1 5</div><div class="line"></div><div class="line">3 4</div><div class="line"></div><div class="line">5 2</div><div class="line"></div><div class="line">1 3</div><div class="line"></div><div class="line">1 4</div><div class="line"></div><div class="line">2 3</div><div class="line"></div><div class="line">5 6</div></pre></td></tr></table></figure>
+<h4 id="样例输出-Sample-Output"><a href="#样例输出-Sample-Output" class="headerlink" title="样例输出 Sample Output"></a>样例输出 Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Yes</div><div class="line"></div><div class="line">Yes</div><div class="line"></div><div class="line">No</div></pre></td></tr></table></figure>
+<p>并查集裸题，就当给dalao递板子了，虽然我比较弱，还是说一下自己的理解；其实并查集呢，我们就把它想象成一棵树，存在只有自己一个节点的树，也存在拥有多个节点的树，只要是连通，我们就说他们位于同一个树中，合并并查集呢，就是将两棵树的树根连接在一起咯；<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">char</span> ch = getchar(); <span class="keyword">int</span> res = <span class="number">0</span>; <span class="keyword">int</span> flag = <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch == <span class="string">'-'</span>) flag = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;res = res * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">	<span class="keyword">return</span> (res * flag);</div><div class="line">&#125;</div><div class="line"><span class="comment">//高天宇的快读，大家可以拿去用；</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n, m, p;</div><div class="line"><span class="keyword">int</span> father[<span class="number">5000</span> + <span class="number">5</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> father[x] == x ? x : father[x] = find(father[x]);</div><div class="line">&#125;</div><div class="line"><span class="comment">//寻找父亲（根节点）的操作；</span></div><div class="line"><span class="comment">//路径压缩，回溯的时候就顺带把父亲们直接连接在根节点上，那么节点们寻找根节点的路径</span></div><div class="line"><span class="comment">//就变短了，所以称为路径压缩；</span></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> r1 = find(x); <span class="keyword">int</span> r2 = find(y);</div><div class="line">	<span class="keyword">if</span>(r1 == r2) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">else</span> father[r1] = r2;</div><div class="line">&#125;</div><div class="line"><span class="comment">//合并操作；如果不是同一个父亲（根节点），则把两棵子树通过各自的根节点连在一起；</span></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> find(x) == find(y) ? <span class="literal">true</span> : <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//判断是不是同一个父亲；</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	n = read(); m = read(); p = read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i) father[i] = i;</div><div class="line">    <span class="comment">//千万别忘了初始化！！！</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++ i) &#123;</div><div class="line">		<span class="keyword">int</span> x = read(); <span class="keyword">int</span> y = read();</div><div class="line">		merge(x, y);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= p; ++ i) &#123;</div><div class="line">		<span class="keyword">int</span> x1 = read(); <span class="keyword">int</span> x2 = read();</div><div class="line">		<span class="keyword">if</span>(judge(x1, x2)) <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</div><div class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -361,14 +360,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/10/22/2370/" rel="next" title="「codevs2370」LCA-倍增">
+                <i class="fa fa-chevron-left"></i> 「codevs2370」LCA-倍增
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/18/3027/" rel="prev" title="「codevs3027」序列DP">
-                「codevs3027」序列DP <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/25/「统计」离散化+Map/" rel="prev" title="「统计」离散化+Map">
+                「统计」离散化+Map <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

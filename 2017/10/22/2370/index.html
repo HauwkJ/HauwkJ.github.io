@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OI - 图论," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目链接   小机房有棵焕狗种的树，树上有N个节点，节点标号为0到N-1，有两只虫子名叫飘狗和大吉狗，分居在两个不同的节点上。有一天，他们想爬到一个节点上去搞基，但是作为两只虫子，他们不想花费太多精力。已知从某个节点爬到其父亲节点要花费 c 的能量（从父亲节点爬到此节点也相同），他们想找出一条花费精力最短的路，以使得搞基的时候精力旺盛，他们找到你要你设计一个程序来找到这条路，要求你告诉他们最少需要">
+<meta name="keywords" content="OI - 图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「codevs2370」LCA-倍增">
+<meta property="og:url" content="https://hauwkj.github.io/2017/10/22/2370/index.html">
+<meta property="og:site_name" content="Hauwk&#39;s Blog">
+<meta property="og:description" content="题目链接   小机房有棵焕狗种的树，树上有N个节点，节点标号为0到N-1，有两只虫子名叫飘狗和大吉狗，分居在两个不同的节点上。有一天，他们想爬到一个节点上去搞基，但是作为两只虫子，他们不想花费太多精力。已知从某个节点爬到其父亲节点要花费 c 的能量（从父亲节点爬到此节点也相同），他们想找出一条花费精力最短的路，以使得搞基的时候精力旺盛，他们找到你要你设计一个程序来找到这条路，要求你告诉他们最少需要">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-31T12:28:14.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「codevs2370」LCA-倍增">
+<meta name="twitter:description" content="题目链接   小机房有棵焕狗种的树，树上有N个节点，节点标号为0到N-1，有两只虫子名叫飘狗和大吉狗，分居在两个不同的节点上。有一天，他们想爬到一个节点上去搞基，但是作为两只虫子，他们不想花费太多精力。已知从某个节点爬到其父亲节点要花费 c 的能量（从父亲节点爬到此节点也相同），他们想找出一条花费精力最短的路，以使得搞基的时候精力旺盛，他们找到你要你设计一个程序来找到这条路，要求你告诉他们最少需要">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hauwkj.github.io/2017/10/22/2370/"/>
+
+
+
+
+
+  <title>「codevs2370」LCA-倍增 | Hauwk's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hauwk's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2017/10/22/2370/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hauwk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ojzeatu2s.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hauwk's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「codevs2370」LCA-倍增</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T00:00:00+08:00">
+                2017-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OI/" itemprop="url" rel="index">
+                    <span itemprop="name">OI</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://codevs.cn/problem/2370/" target="_blank" rel="external">题目链接</a></p>
+<p>  小机房有棵焕狗种的树，树上有N个节点，节点标号为<strong>0到N-1</strong>，有两只虫子名叫飘狗和大吉狗，分居在两个不同的节点上。有一天，他们想爬到一个节点上去搞基，但是作为两只虫子，他们不想花费太多精力。已知从某个节点爬到其父亲节点要花费<strong> c</strong> 的能量（从父亲节点爬到此节点也相同），他们想找出一条花费精力最短的路，以使得搞基的时候精力旺盛，他们找到你要你设计一个程序来找到这条路，要求你告诉他们最少需要花费多少精力</p>
+<a id="more"></a>
+<h4 id="输入描述-Input-Description"><a href="#输入描述-Input-Description" class="headerlink" title="输入描述 Input Description"></a>输入描述 Input Description</h4><p>第一行一个n，接下来n-1行每一行有三个整数u，v, c 。表示节点 u 爬到节点 v 需要花费 c 的精力。<br>第n+1行有一个整数m表示有m次询问。接下来m行每一行有两个整数 u ，v 表示两只虫子所在的节点<br>输出描述 Output Description<br>一共有m行，每一行一个整数，表示对于该次询问所得出的最短距离。</p>
+<h4 id="样例输入-Sample-Input"><a href="#样例输入-Sample-Input" class="headerlink" title="样例输入 Sample Input"></a>样例输入 Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">3</div><div class="line"></div><div class="line">1 0 1</div><div class="line"></div><div class="line">2 0 1</div><div class="line"></div><div class="line">3</div><div class="line"></div><div class="line">1 0</div><div class="line"></div><div class="line">2 0</div><div class="line"></div><div class="line">1 2</div></pre></td></tr></table></figure>
+<h4 id="样例输出-Sample-Output"><a href="#样例输出-Sample-Output" class="headerlink" title="样例输出 Sample Output"></a>样例输出 Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line"></div><div class="line">1</div><div class="line"></div><div class="line">2</div></pre></td></tr></table></figure>
+<h4 id="数据范围及提示-Data-Size-amp-Hint"><a href="#数据范围及提示-Data-Size-amp-Hint" class="headerlink" title="数据范围及提示 Data Size &amp; Hint"></a>数据范围及提示 Data Size &amp; Hint</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1&lt;=n&lt;=50000， 1&lt;=m&lt;=75000， 0&lt;=c&lt;=1000</div></pre></td></tr></table></figure>
+<p>这是一道lca（最近公共祖先）的裸体， 我们只需要求出两点到根节点的距离和， 再用 距离和 减去 两次 lca到根节点的距离，即为两点间的最短路径长度；</p>
+<p>那么lca要怎么求呢？ 我们一起来看一看！ 首先我们需要定义一个数组depth[i]记录i点的深度（通过函数dfs求出）；一个二维数组father[x][i]记录点x向上2的i次方的祖先（通过函数pow_init求出）；已知x，y求lca的方法：看x,y两点是否为同一深度，我们移动较深的点直至两点位于同一深度，然后从2的i次方开始跳（i为 上跳2的i次方 最大不超过根节点 时i的值），i递减，如果跳到同一点，则不跳（防止跳过lca到了别的点），最后我们肯定会走到离lca深度为1的点，再跳一个深度即可！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> max(x, y) ((x) &gt; (y) ? (x) : (y))</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">50000</span> + <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> to, w, next;</div><div class="line">&#125; edge[MAXN * <span class="number">2</span>];</div><div class="line"></div><div class="line"><span class="keyword">int</span> n, m, num, logn, deep;</div><div class="line"><span class="keyword">int</span> head[MAXN], depth[MAXN], dis[MAXN];</div><div class="line"><span class="keyword">int</span> father[MAXN][<span class="number">20</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> w)</span> </span>&#123;</div><div class="line">	edge[++num].to = to;</div><div class="line">	edge[num].w = w;</div><div class="line">	edge[num].next = head[from];</div><div class="line">	head[from] = num;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> cur)</span> </span>&#123; <span class="comment">// x是点， cur是点的深度；</span></div><div class="line">	depth[x] = cur;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].next) &#123; <span class="comment">// 遍历；</span></div><div class="line">		<span class="keyword">if</span>(depth[edge[i].to]) <span class="keyword">continue</span>; <span class="comment">// 如果这个点是父亲；</span></div><div class="line">		father[edge[i].to][<span class="number">0</span>] = x;</div><div class="line">		dis[edge[i].to] = edge[i].w + dis[x];<span class="comment">//预处理树的前缀和；</span></div><div class="line">		deep = max(deep, depth[x]); <span class="comment">// 求树的深度；</span></div><div class="line">		dfs(edge[i].to, depth[x] + <span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pow_init</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;(<span class="number">1</span> &lt;&lt; j) &lt;= deep;j ++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i ++)</div><div class="line">		&#123;</div><div class="line">			father[i][j] = father[father[i][j - <span class="number">1</span>]][j - <span class="number">1</span>];</div><div class="line">            <span class="comment">//倍增的运用，dalao自行脑补或者画张图，一张图很明了的， 倍增：这样可以借助之前的点做跳板，如果想暴力一个一个地枚举也可以，但是就比较慢了；</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//遍历出父亲；</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span>(depth[x] &lt; depth[y]) <span class="built_in">std</span>::swap(x, y);</div><div class="line">	<span class="keyword">if</span>(depth[x] != depth[y]) &#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = logn; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">			<span class="keyword">if</span>(depth[x] - (<span class="number">1</span> &lt;&lt; i) &gt;= depth[y]) &#123;</div><div class="line">            <span class="comment">//如果没有跳多； 就跳！；</span></div><div class="line">				x = father[x][i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(x == y) <span class="keyword">return</span> x;</div><div class="line">   <span class="comment">//如果跳到同一深度就是同一个点，说明两点在同一路径上面，找到了！；</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = logn; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">		<span class="keyword">if</span>(father[x][i] == father[y][i]) <span class="keyword">continue</span>;</div><div class="line">		x = father[x][i]; y = father[y][i];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> father[x][<span class="number">0</span>];<span class="comment">//再向上一部</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">		<span class="keyword">int</span> u, v, c;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;c);</div><div class="line">		add_edge(u, v, c);</div><div class="line">		add_edge(v, u, c);</div><div class="line">	&#125;</div><div class="line">	dfs(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">	pow_init(n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; (<span class="number">1</span> &lt;&lt; i) &lt;= deep; i++) logn = i;logn++;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">int</span> x, y;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</div><div class="line">		<span class="keyword">int</span> r = LCA(x, y);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dis[x] + dis[y] - dis[r] * <span class="number">2</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OI-图论/" rel="tag"># OI - 图论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/22/字符串STL/" rel="next" title="字符串STL">
+                <i class="fa fa-chevron-left"></i> 字符串STL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/22/1073/" rel="prev" title="「codevs1073」并查集">
+                「codevs1073」并查集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ojzeatu2s.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.jpg"
+                alt="Hauwk" />
+            
+              <p class="site-author-name" itemprop="name">Hauwk</p>
+              <p class="site-description motion-element" itemprop="description">An ordinary high school student is sharing with you!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-Input-Description"><span class="nav-number">1.</span> <span class="nav-text">输入描述 Input Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样例输入-Sample-Input"><span class="nav-number">2.</span> <span class="nav-text">样例输入 Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样例输出-Sample-Output"><span class="nav-number">3.</span> <span class="nav-text">样例输出 Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据范围及提示-Data-Size-amp-Hint"><span class="nav-number">4.</span> <span class="nav-text">数据范围及提示 Data Size & Hint</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hauwk</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
