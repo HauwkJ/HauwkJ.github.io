@@ -82,7 +82,7 @@
 <meta name="description" content="An ordinary high school student is sharing with you!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hauwk&#39;s Blog">
-<meta property="og:url" content="https://hauwkj.github.io/archives/2017/10/index.html">
+<meta property="og:url" content="https://hauwkj.github.io/page/2/index.html">
 <meta property="og:site_name" content="Hauwk&#39;s Blog">
 <meta property="og:description" content="An ordinary high school student is sharing with you!">
 <meta property="og:locale" content="zh-Hans">
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://hauwkj.github.io/archives/2017/10/"/>
+  <link rel="canonical" href="https://hauwkj.github.io/page/2/"/>
 
 
 
 
 
-  <title>归档 | Hauwk's Blog</title>
+  <title>Hauwk's Blog</title>
   
 
 
@@ -143,7 +143,8 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,370 +217,163 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 11 篇日志。 继续努力。
-      </span>
-
+  <section id="posts" class="posts-expand">
+    
       
 
-        
-        
-        
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2017/10/15/1557/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hauwk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ojzeatu2s.bkt.clouddn.com/%E4%B8%8B%E8%BD%BD.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hauwk's Blog">
+    </span>
+
+    
+      <header class="post-header">
 
         
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/15/1557/" itemprop="url">「codevs1557」Dijkstra</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T00:00:00+08:00">
+                2017-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OI/" itemprop="url" rel="index">
+                    <span itemprop="name">OI</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="http://codevs.cn/problem/1557/" target="_blank" rel="external">题目链接</a></p>
+<p>   德克萨斯纯朴的民眾们这个夏天正在遭受巨大的热浪！！！他们的德克萨斯长角牛吃起来不错，可是他们并不是很擅长生產富含奶油的乳製品。Farmer John此时以先天下之忧而忧，后天下之乐而乐的精神，身先士卒地承担起向德克萨斯运送大量的营养冰凉的牛奶的重任，以减轻德克萨斯人忍受酷暑的痛苦。</p>
+<p>FJ已经研究过可以把牛奶从威斯康星运送到德克萨斯州的路线。这些路线包括起始点和终点先一共经过T <strong>(1 &lt;= T &lt;= 2,500)</strong>个城镇，方便地标号為1到<strong>T</strong>。除了起点和终点外地每个城镇由两条双向道路连向至少两个其它地城镇。每条道路有一个通过费用（包括油费，过路费等等）。</p>
+<p>给定一个地图，包含C<strong> (1 &lt;= C &lt;= 6,200)</strong>条直接连接2个城镇的道路。每条道路由道路的起点Rs，终点Re <strong>(1 &lt;= Rs &lt;= T; 1 &lt;= Re &lt;= T)</strong>，和花费<strong>(1 &lt;= Ci &lt;= 1,000)</strong>组成。求从起始的城镇Ts <strong>(1 &lt;= Ts &lt;= T)</strong>到终点的城镇Te<strong>(1 &lt;= Te &lt;= T)</strong>最小的总费用。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/15/1557/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
           </div>
+          <!--/noindex-->
         
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/25/「统计」离散化+Map/" itemprop="url">
-              
-                <span itemprop="name">「统计」离散化+Map</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-25T00:00:00+08:00"
-              content="2017-10-25" >
-          10-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/22/字符串STL/" itemprop="url">
-              
-                <span itemprop="name">字符串STL</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-22T00:00:00+08:00"
-              content="2017-10-22" >
-          10-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/22/2370/" itemprop="url">
-              
-                <span itemprop="name">「codevs2370」LCA-倍增</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-22T00:00:00+08:00"
-              content="2017-10-22" >
-          10-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/22/1073/" itemprop="url">
-              
-                <span itemprop="name">「codevs1073」并查集</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-22T00:00:00+08:00"
-              content="2017-10-22" >
-          10-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/20/Vector-不定长数组/" itemprop="url">
-              
-                <span itemprop="name">Vector-不定长数组</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-20T00:00:00+08:00"
-              content="2017-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/19/1047/" itemprop="url">
-              
-                <span itemprop="name">「codevs1047」DP + 搜索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-19T00:00:00+08:00"
-              content="2017-10-19" >
-          10-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/18/3027/" itemprop="url">
-              
-                <span itemprop="name">「codevs3027」序列DP</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-18T00:00:00+08:00"
-              content="2017-10-18" >
-          10-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/17/1078/" itemprop="url">
-              
-                <span itemprop="name">「codevs1078」Kruskal</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-17T00:00:00+08:00"
-              content="2017-10-17" >
-          10-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/15/1557/" itemprop="url">
-              
-                <span itemprop="name">「codevs1557」Dijkstra</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-15T00:00:00+08:00"
-              content="2017-10-15" >
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
   
   
   
+  </article>
+
+
+    
+  </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
