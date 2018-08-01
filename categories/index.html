@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="STL," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="不定长数组vector是一个stl库中的容器；类似于数组，因其有不定长的特性，故在一些情况下可以节省空间； 调用vector需要挂头文件&amp;lt;vector&amp;gt;;还需要注明std；">
-<meta name="keywords" content="STL">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vector-不定长数组">
-<meta property="og:url" content="https://hauwkj.github.io/2017/10/20/Vector-不定长数组/index.html">
+<meta name="description" content="An ordinary high school student is sharing with you!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://hauwkj.github.io/categories/index.html">
 <meta property="og:site_name" content="Hauwk&#39;s Blog">
-<meta property="og:description" content="不定长数组vector是一个stl库中的容器；类似于数组，因其有不定长的特性，故在一些情况下可以节省空间； 调用vector需要挂头文件&amp;lt;vector&amp;gt;;还需要注明std；">
+<meta property="og:description" content="An ordinary high school student is sharing with you!">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-31T11:47:24.052Z">
+<meta property="og:updated_time" content="2018-08-01T01:38:47.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vector-不定长数组">
-<meta name="twitter:description" content="不定长数组vector是一个stl库中的容器；类似于数组，因其有不定长的特性，故在一些情况下可以节省空间； 调用vector需要挂头文件&amp;lt;vector&amp;gt;;还需要注明std；">
+<meta name="twitter:title" content="categories">
+<meta name="twitter:description" content="An ordinary high school student is sharing with you!">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://hauwkj.github.io/2017/10/20/Vector-不定长数组/"/>
+  <link rel="canonical" href="https://hauwkj.github.io/categories/"/>
 
 
 
 
 
-  <title>Vector-不定长数组 | Hauwk's Blog</title>
+  <title>categories | Hauwk's Blog</title>
   
 
 
@@ -221,181 +220,40 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2017/10/20/Vector-不定长数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hauwk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hauwk's Blog">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Vector-不定长数组</h1>
-        
+	<h1 class="post-title" itemprop="name headline">categories</h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T00:00:00+08:00">
-                2017-10-20
-              </time>
-            
 
-            
 
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OI/" itemprop="url" rel="index">
-                    <span itemprop="name">OI</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <p>不定长数组<strong>vector</strong>是一个<strong>stl</strong>库中的容器；类似于数组，因其有不定长的特性，故在<strong>一些情况下</strong>可以<strong>节省空间</strong>；</p>
-<p>调用vector需要挂头文件<code>&lt;vector&gt;</code>;<br>还需要注明<code>std</code>；</p>
-<a id="more"></a>
-<h4 id="常用用法"><a href="#常用用法" class="headerlink" title="常用用法"></a>常用用法</h4><p>·我们先来定义一个int型的vector数组： <code>vector &lt;int&gt; vec</code></p>
-<p>·新增元素i至数组尾部：<code>vec.push_back(i)</code></p>
-<p>·删除数组尾部的元素：<code>vec.pop_back()</code></p>
-<p>·回传vector第一个元素的值：<code>vec.front()</code></p>
-<p>·回传vector数组最尾部元素的值：<code>vec.back()</code></p>
-<p>·存取索引值为i的元素值：<code>vec[i] 或者 vec.(i)</code>//前提是位置已开出</p>
-<p>·清空vector数组内的元素：<code>vec.clear()</code></p>
-<p>·判断数组是否为空(如果为空，返回true)：<code>vec.empty()</code> </p>
-<p>·获取vector数组目前拥有的元素个数：<code>vec.size()</code></p>
-
+      <div class="post-body">
+        
+        
+          <div class="category-all-page">
+            <div class="category-all-title">
+                目前共计 1 个分类
+            </div>
+            <div class="category-all">
+              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a><span class="category-list-count">11</span></li></ul>
+            </div>
+          </div>
+        
+      </div>
+      
+      
       
     </div>
     
     
     
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/STL/" rel="tag"># STL</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/19/1047/" rel="next" title="「codevs1047」DP + 搜索">
-                <i class="fa fa-chevron-left"></i> 「codevs1047」DP + 搜索
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/22/2370/" rel="prev" title="「codevs2370」LCA-倍增">
-                「codevs2370」LCA-倍增 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
@@ -428,17 +286,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -504,22 +353,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用用法"><span class="nav-number">1.</span> <span class="nav-text">常用用法</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
