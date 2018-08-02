@@ -62,41 +62,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[「NOIP2012」Vigenère密码]]></title>
-      <url>/2017/11/03/1197/</url>
-      <content type="html"><![CDATA[<p><a href="http://codevs.cn/problem/1197/" target="_blank" rel="external">题目链接</a></p>
-<p>16 世纪法国外交家Blaise de Vigenère设计了一种多表密码加密算法——Vigenère密码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。</p>
-<p>在密码学中，我们称需要加密的信息为明文，用 M 表示；称加密后的信息为密文，用C 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为明文的算法中输入的数据，记为k。 在Vigenère密码中， 密钥k是一个字母串， k=k1k2…kn。当明文M=m1m2…mn时，得到的密文C=c1c2…cn，其中<strong>ci=mi®ki</strong>，运算®的规则如下表所示：</p>
-<p>Vigenère加密在操作时需要注意：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.  ®运算忽略参与运算的字母的大小写，并保持字母在明文 M中的大小写形式；</div><div class="line">2.  当明文M的长度大于密钥k的长度时，将密钥k 重复使用。</div></pre></td></tr></table></figure>
-<p>例如，明文M=Helloworld，密钥k=abc 时，密文C=Hfnlpyosnd。</p>
-<p><strong>这里题面的表不是很好弄，还请大家点击题目链接看题</strong>；</p>
-<a id="more"></a>
-<h4 id="输入描述-Input-Description"><a href="#输入描述-Input-Description" class="headerlink" title="输入描述 Input Description"></a>输入描述 Input Description</h4><p>输入共2行。</p>
-<p>第一行为一个字符串，表示密钥k，长度不超过100，其中仅包含大小写字母。第二为一个字符串，表示经加密后的密文，长度不超过1000，其中仅包含大小写字母</p>
-<h4 id="输出描述-Output-Description"><a href="#输出描述-Output-Description" class="headerlink" title="输出描述 Output Description"></a>输出描述 Output Description</h4><p>输出共1行，一个字符串，表示输入密钥和密文所对应的明文</p>
-<h4 id="样例输入-Sample-Input"><a href="#样例输入-Sample-Input" class="headerlink" title="样例输入 Sample Input"></a>样例输入 Sample Input</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CompleteVictory</div><div class="line"></div><div class="line">Yvqgpxaimmklongnzfwpvxmniytm</div></pre></td></tr></table></figure>
-<h4 id="样例输出-Sample-Output"><a href="#样例输出-Sample-Output" class="headerlink" title="样例输出 Sample Output"></a>样例输出 Sample Output</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Wherethereisawillthereisaway</div></pre></td></tr></table></figure>
-<p>NOIP2012 Day1T1, 本题还是比较简单，纯模拟；</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> len, lenk, cnt = <span class="number">1</span>;<span class="comment">//len密文长度， lenk密钥长度；</span></div><div class="line"><span class="keyword">char</span> keyy[<span class="number">105</span>], key[<span class="number">1005</span>], mi[<span class="number">1005</span>], light[<span class="number">1005</span>], abc[<span class="number">27</span>], asc[<span class="number">26</span>];</div><div class="line"><span class="comment">//key存储输入的密钥， mi存储输入的密文，light存储明文，abc存储26个英文字母；</span></div><div class="line"><span class="keyword">bool</span> flag[<span class="number">1005</span>];<span class="comment">//用于还原大小写；</span></div><div class="line"><span class="comment">//本题中全部转化为小写字母，方便操作；</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">solve</span><span class="params">(<span class="keyword">char</span> x, <span class="keyword">char</span> y)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> pos = y - <span class="string">'a'</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">26</span>; i++) &#123;</div><div class="line">		asc[i] = <span class="string">'a'</span> + pos;</div><div class="line">		<span class="keyword">if</span>(pos == <span class="number">25</span>) pos = <span class="number">0</span>;</div><div class="line">		<span class="keyword">else</span> pos ++; </div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">26</span>; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(x == asc[i]) <span class="keyword">return</span>(abc[i]);</div><div class="line">	&#125;</div><div class="line">&#125;<span class="comment">//密文还原操作；</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>, keyy+<span class="number">1</span>, mi+<span class="number">1</span>);</div><div class="line">	<span class="comment">//直接将字符串输入到char数组中，从下标1开始存储；</span></div><div class="line">	len = <span class="built_in">strlen</span>(mi + <span class="number">1</span>); lenk = <span class="built_in">strlen</span>(keyy + <span class="number">1</span>);</div><div class="line">	<span class="comment">//strlen需使用头文件&lt;cstring&gt;；</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; i ++) &#123;</div><div class="line">		key[i] = keyy[cnt];</div><div class="line">		<span class="keyword">if</span>(cnt == lenk) cnt = <span class="number">1</span>;</div><div class="line">		<span class="keyword">else</span> cnt ++;</div><div class="line">	&#125;<span class="comment">//将密钥循环存入数组，用于后来的还原明文操作；</span></div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">26</span>; i++) &#123;</div><div class="line">		abc[i] = <span class="string">'a'</span> + i - <span class="number">1</span>;	</div><div class="line">	&#125;<span class="comment">//将26位字母按字典序存入；</span></div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(mi[i] &lt; <span class="number">97</span>) &#123;</div><div class="line">			flag[i] = <span class="number">1</span>;</div><div class="line">			mi[i] += <span class="number">32</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(key[i] &lt; <span class="number">97</span>) key[i] += <span class="number">32</span>;</div><div class="line">	&#125;<span class="comment">//大小写转换；</span></div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; i++) &#123;</div><div class="line">		light[i] = solve(mi[i], key[i]);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(flag[i] == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>, light[i] - <span class="number">32</span>);<span class="comment">//还原大写字母；</span></div><div class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%c"</span>, light[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> OI </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> NOIP </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[「统计」离散化+Map]]></title>
       <url>/2017/10/25/%E3%80%8C%E7%BB%9F%E8%AE%A1%E3%80%8D%E7%A6%BB%E6%95%A3%E5%8C%96+Map/</url>
       <content type="html"><![CDATA[<p>  给定N个数，有M个询问。每次询问一段区间内有没有出现过Xi这个数。</p>
@@ -110,6 +75,29 @@
 <hr>
 <p>这道题有很多种解法，在这里介绍一个用map离散化的做法；其实数据够良心，直接for循环打暴力也可以得到40分的（亲测）；</p>
 <p>用map（stl）储存数据，以数字为标志，再开一个vector数组存该数据出现过的位置，直接看位置数据内是否有存在所输入查询范围内的个体；<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n, m, l, r, x, y;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">char</span> ch = getchar(); <span class="keyword">int</span> res = <span class="number">0</span>; <span class="keyword">int</span> flag = <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>(ch &gt; <span class="string">'9'</span> || ch &lt; <span class="string">'0'</span>) &#123;<span class="keyword">if</span>(ch == <span class="string">'-'</span>) flag = <span class="number">-1</span>; ch = getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) &#123;res = res * <span class="number">10</span> + ch - <span class="string">'0'</span>; ch = getchar();&#125;</div><div class="line">	<span class="keyword">return</span> (res * flag);</div><div class="line">&#125;</div><div class="line"><span class="comment">//高天宇快读；</span></div><div class="line"></div><div class="line"><span class="built_in">map</span> &lt; <span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; mapp;</div><div class="line"><span class="comment">//用int型映射一个int类型的vector；</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mapp[x].size(); i++) &#123;</div><div class="line">		<span class="keyword">if</span>(mapp[x][i] &gt;= l &amp;&amp; mapp[x][i] &lt;= r) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	freopen(<span class="string">"statistic.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">	freopen(<span class="string">"statistic.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line">	n = read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		y = read();</div><div class="line">		mapp[y].push_back(i);</div><div class="line">	&#125;</div><div class="line">	m = read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		l = read(); r = read(); x = read();</div><div class="line">		<span class="keyword">if</span>(query(l, r, x)) <span class="built_in">printf</span>(<span class="string">"1"</span>);</div><div class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"0"</span>);</div><div class="line">	&#125;</div><div class="line">	fclose(<span class="built_in">stdin</span>);</div><div class="line">	fclose(<span class="built_in">stdout</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> OI </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> STL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[字符串STL]]></title>
+      <url>/2017/10/22/%E5%AD%97%E7%AC%A6%E4%B8%B2STL/</url>
+      <content type="html"><![CDATA[<p>参考 （侵权必删）： <a href="http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml" target="_blank" rel="external">http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml</a></p>
+<p><a href="http://blog.csdn.net/f_c_g_/article/details/51228909" target="_blank" rel="external">http://blog.csdn.net/f_c_g_/article/details/51228909</a></p>
+<p>dalao们总结的够好了， 我就做一个传播者咯(ง •_•)ง<br><a id="more"></a>          </p>
 ]]></content>
       
         <categories>
@@ -180,29 +168,6 @@
         <tags>
             
             <tag> 图论 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[字符串STL]]></title>
-      <url>/2017/10/22/%E5%AD%97%E7%AC%A6%E4%B8%B2STL/</url>
-      <content type="html"><![CDATA[<p>参考 （侵权必删）： <a href="http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml" target="_blank" rel="external">http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml</a></p>
-<p><a href="http://blog.csdn.net/f_c_g_/article/details/51228909" target="_blank" rel="external">http://blog.csdn.net/f_c_g_/article/details/51228909</a></p>
-<p>dalao们总结的够好了， 我就做一个传播者咯(ง •_•)ง<br><a id="more"></a>          </p>
-]]></content>
-      
-        <categories>
-            
-            <category> OI </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> STL </tag>
             
         </tags>
         
