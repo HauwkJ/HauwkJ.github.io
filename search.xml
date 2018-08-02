@@ -93,8 +93,6 @@
             
             <tag> STL </tag>
             
-            <tag> OI </tag>
-            
         </tags>
         
     </entry>
@@ -116,7 +114,7 @@
         
         <tags>
             
-            <tag> STL - 字符串 </tag>
+            <tag> STL </tag>
             
         </tags>
         
@@ -144,7 +142,7 @@
         
         <tags>
             
-            <tag> OI - 图论 </tag>
+            <tag> 图论 </tag>
             
         </tags>
         
@@ -174,7 +172,7 @@
         
         <tags>
             
-            <tag> OI - 图论 </tag>
+            <tag> 图论 </tag>
             
         </tags>
         
@@ -268,7 +266,7 @@ MAX=7
         
         <tags>
             
-            <tag> OI - DP </tag>
+            <tag> DP </tag>
             
         </tags>
         
@@ -297,7 +295,7 @@ MAX=7
         
         <tags>
             
-            <tag> OI - 图论 </tag>
+            <tag> 图论 </tag>
             
         </tags>
         
@@ -330,7 +328,7 @@ MAX=7
         
         <tags>
             
-            <tag> OI - 图论 </tag>
+            <tag> OI </tag>
             
         </tags>
         
