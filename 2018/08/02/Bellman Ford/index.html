@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论  Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m; i">
+<meta name="description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论    Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hauwk&#39;s Blog">
 <meta property="og:url" content="https://hauwkj.github.io/2018/08/02/Bellman Ford/index.html">
 <meta property="og:site_name" content="Hauwk&#39;s Blog">
-<meta property="og:description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论  Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m; i">
+<meta property="og:description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论    Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-02T08:23:27.661Z">
+<meta property="og:updated_time" content="2018-08-02T08:30:46.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hauwk&#39;s Blog">
-<meta name="twitter:description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论  Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m; i">
+<meta name="twitter:description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论    Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m;">
 
 
 
@@ -331,7 +331,7 @@
       
         <hr>
 <p>title: Bellman-Ford<br>date: 2018-7-26<br>categories: OI<br>author: Hauwk<br>tags:</p>
-<pre><code>- 图论
+<pre><code>- 图论  
 </code></pre><hr>
 <p>Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n - <span class="number">1</span>; k ++) &#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) &#123;</div><div class="line">			dist[edge[i].to] = dist[edge[i].from] + edge[i].w;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">```  </div><div class="line">上面的代码中，外循环一共循环了n - <span class="number">1</span>次（n为顶点的个数），内循环循环了m次（m为边的个数），dist为源点到其余各点的距离。</div></pre></td></tr></table></figure></p>
 <p>if(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) {<br>            dist[edge[i].to] = dist[edge[i].from] + edge[i].w;<br>        }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">上面这两行代码的意思是，看看能否通过第i条边，使得源点到第i条边的终点的距离变短。这其实与dijkstra的**松弛**操作是一样的。现在我们要把所有的边都松弛一遍。</div></pre></td></tr></table></figure></p>
