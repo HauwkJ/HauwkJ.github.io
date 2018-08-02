@@ -3,13 +3,9 @@
   
     
     <entry>
-      <title></title>
-      <url>/2018/08/02/Bellman%20Ford/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: Bellman-Ford<br>date: 2018-7-26<br>categories: OI<br>author: Hauwk<br>tags:</p>
-<pre><code>- 图论  
-</code></pre><hr>
-<p>Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n - <span class="number">1</span>; k ++) &#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) &#123;</div><div class="line">			dist[edge[i].to] = dist[edge[i].from] + edge[i].w;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">```  </div><div class="line">上面的代码中，外循环一共循环了n - <span class="number">1</span>次（n为顶点的个数），内循环循环了m次（m为边的个数），dist为源点到其余各点的距离。</div></pre></td></tr></table></figure></p>
+      <title><![CDATA[Bellman Ford]]></title>
+      <url>/2018/07/26/Bellman%20Ford/</url>
+      <content type="html"><![CDATA[<p>Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n - <span class="number">1</span>; k ++) &#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) &#123;</div><div class="line">			dist[edge[i].to] = dist[edge[i].from] + edge[i].w;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">```  </div><div class="line">上面的代码中，外循环一共循环了n - <span class="number">1</span>次（n为顶点的个数），内循环循环了m次（m为边的个数），dist为源点到其余各点的距离。</div></pre></td></tr></table></figure></p>
 <p>if(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) {<br>            dist[edge[i].to] = dist[edge[i].from] + edge[i].w;<br>        }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">上面这两行代码的意思是，看看能否通过第i条边，使得源点到第i条边的终点的距离变短。这其实与dijkstra的**松弛**操作是一样的。现在我们要把所有的边都松弛一遍。</div></pre></td></tr></table></figure></p>
 <p>for(int i = 1; i &lt;= m; i++) {<br>        if(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) {<br>            dist[edge[i].to] = dist[edge[i].from] + edge[i].w;<br>        }<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">在第1轮对所有边进行松弛之后，得到的是从源点**只经过一条边**到达其余个顶点的最短路径长度。在第2轮对所有的边进行松弛之后，得到的是从源点**最多经过两条边**到达其余各顶点的最短路径长度。如果进行k轮的话，得到的就是从源点**最多经过k条边**到达其余各顶点的最短路径长度。</div><div class="line"></div><div class="line">我们最多进行**n-1**轮松弛就可以了，因为在一个含n个点的图中，任意两点间的最短路径最多包含n-1条边。</div><div class="line"></div><div class="line">[题目链接](http://codevs.cn/problem/1557/)</div><div class="line"></div><div class="line"> </div><div class="line"></div><div class="line">热浪大家已经很熟悉了，这道题也可以作为**Bellman Ford**算法的模板题，大家可以用这道题来检验自己算法的准确性。</div></pre></td></tr></table></figure></p>
 <p>#include <cstdio></cstdio></p>
@@ -35,6 +31,18 @@ return 0;
 <p>```</p>
 ]]></content>
       
+        <categories>
+            
+            <category> OI </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 图论 </tag>
+            
+        </tags>
         
     </entry>
     
