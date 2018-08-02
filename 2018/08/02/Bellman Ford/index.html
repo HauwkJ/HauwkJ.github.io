@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="An ordinary high school student is sharing with you!">
-<meta property="og:type" content="website">
+<meta name="description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论  Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m; i">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hauwk&#39;s Blog">
-<meta property="og:url" content="https://hauwkj.github.io/frlink/index.html">
+<meta property="og:url" content="https://hauwkj.github.io/2018/08/02/Bellman Ford/index.html">
 <meta property="og:site_name" content="Hauwk&#39;s Blog">
-<meta property="og:description" content="An ordinary high school student is sharing with you!">
+<meta property="og:description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论  Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m; i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-02T01:44:02.908Z">
+<meta property="og:updated_time" content="2018-08-02T08:23:27.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hauwk&#39;s Blog">
-<meta name="twitter:description" content="An ordinary high school student is sharing with you!">
+<meta name="twitter:description" content="title: Bellman-Forddate: 2018-7-26categories: OIauthor: Hauwktags: - 图论  Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：123456789for(int k = 1; k &amp;lt;= n - 1; k ++) &amp;#123;	for(int i = 1; i &amp;lt;= m; i">
 
 
 
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="https://hauwkj.github.io/frlink/"/>
+  <link rel="canonical" href="https://hauwkj.github.io/2018/08/02/Bellman Ford/"/>
 
 
 
@@ -250,33 +250,165 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2018/08/02/Bellman Ford/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hauwk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hauwk's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline"></h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T16:24:00+08:00">
+                2018-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <hr>
+<p>title: Bellman-Ford<br>date: 2018-7-26<br>categories: OI<br>author: Hauwk<br>tags:</p>
+<pre><code>- 图论
+</code></pre><hr>
+<p>Bellman Ford算法的优秀之出在于它可以处理带有负边权的图，我们先来看看它的核心代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n - <span class="number">1</span>; k ++) &#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) &#123;</div><div class="line">			dist[edge[i].to] = dist[edge[i].from] + edge[i].w;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">```  </div><div class="line">上面的代码中，外循环一共循环了n - <span class="number">1</span>次（n为顶点的个数），内循环循环了m次（m为边的个数），dist为源点到其余各点的距离。</div></pre></td></tr></table></figure></p>
+<p>if(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) {<br>            dist[edge[i].to] = dist[edge[i].from] + edge[i].w;<br>        }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">上面这两行代码的意思是，看看能否通过第i条边，使得源点到第i条边的终点的距离变短。这其实与dijkstra的**松弛**操作是一样的。现在我们要把所有的边都松弛一遍。</div></pre></td></tr></table></figure></p>
+<p>for(int i = 1; i &lt;= m; i++) {<br>        if(dist[edge[i].to] = dist[edge[i].from] + edge[i].w) {<br>            dist[edge[i].to] = dist[edge[i].from] + edge[i].w;<br>        }<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">在第1轮对所有边进行松弛之后，得到的是从源点**只经过一条边**到达其余个顶点的最短路径长度。在第2轮对所有的边进行松弛之后，得到的是从源点**最多经过两条边**到达其余各顶点的最短路径长度。如果进行k轮的话，得到的就是从源点**最多经过k条边**到达其余各顶点的最短路径长度。</div><div class="line"></div><div class="line">我们最多进行**n-1**轮松弛就可以了，因为在一个含n个点的图中，任意两点间的最短路径最多包含n-1条边。</div><div class="line"></div><div class="line">[题目链接](http://codevs.cn/problem/1557/)</div><div class="line"></div><div class="line"> </div><div class="line"></div><div class="line">热浪大家已经很熟悉了，这道题也可以作为**Bellman Ford**算法的模板题，大家可以用这道题来检验自己算法的准确性。</div></pre></td></tr></table></figure></p>
+<p>#include <cstdio></cstdio></p>
+<p>#include <iostream></iostream></p>
+<p>#include <cctype></cctype></p>
+<p>#define DEBUG(x) std::cerr &lt;&lt; #x &lt;&lt; “=” &lt;&lt; x &lt;&lt;std:: endl</p>
+<p>inline int read() {<br>    char ch = getchar(); int res = 0; int flag = 1;<br>    for(; !isdigit(ch); ch = getchar()) if(ch == ‘-‘) flag = -1;<br>    for(; isdigit(ch); ch = getchar()) res = (res &lt;&lt; 3) + (res &lt;&lt; 1) + ch - ‘0’;<br>    return (res * flag);<br>}//快读  需要用到头文件<cctype></cctype></p>
+<p>const int N_max = 2500 + 7;<br>const int M_max = 13000 + 7;<br>const int INF = 0x3f3f3f3;</p>
+<p>int n, m, start, end, num;<br>int dis[N_max];</p>
+<p>struct Edge{<br>    int from, to, w, next;<br>}edge[M_max];</p>
+<p>inline void add_edge(int from, int to, int w) {<br>    edge[++num].to = to;<br>    edge[num].w = w;<br>    edge[num].from = from;<br>}</p>
+<p>inline int BellmanFord() {<br>    for(int i = 1; i &lt;= n; i ++) {<br>        dis[i] = INF;<br>    }<br>    dis[start] = 0;<br>    for(int j = 1; j &lt;= n - 1; j ++) {<br>        bool check = 0;<br>        for(int i = 1; i &lt;= 2 * m; i++) {<br>            if(dis[edge[i].to] &gt; dis[edge[i].from] + edge[i].w) {<br>                dis[edge[i].to] = dis[edge[i].from] + edge[i].w;<br>                check = 1;<br>            }<br>        }<br>        if(check == 0) break;//如果这一轮松弛操作中，如果dis数组没有任何变动，<br>        那么就可以说明所有点的dis值都已经确定了，便可以退出循环。<br>    }<br>    return dis[end];<br>}</p>
+<p>int main() {<br>    n = read(); m = read(); start = read(); end = read();<br>    for(int i = 1; i &lt;= m; i ++) {<br>        int x, y, z;<br>        x = read(); y = read(); z = read();<br>        add_edge(x, y, z);<br>        add_edge(y, x, z);<br>    }</p>
+<pre><code>for(int i = 1; i &lt;= 2 * m; i ++) {
+    if(dis[edge[i].to] &gt; dis[edge[i].from] + edge[i].w) {
+        printf(&quot;fuhuan\n&quot;);
+    }
+} //如果在Bellman Ford跑完后，dis数组仍可以变动，则说明图中存在负环。
+
+printf(&quot;%d\n&quot;, BellmanFord());
+return 0;
+</code></pre><p>}  </p>
+<p>```</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/06/3288/" rel="next" title="「NOIP2013」积木大赛">
+                <i class="fa fa-chevron-left"></i> 「NOIP2013」积木大赛
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
