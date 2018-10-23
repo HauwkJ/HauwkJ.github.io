@@ -3,10 +3,9 @@
   
     
     <entry>
-      <title></title>
-      <url>/2018/10/23/%E5%AF%BB%E6%89%BE%E9%81%93%E8%B7%AF/</url>
-      <content type="html"><![CDATA[<h1 id="寻找道路"><a href="#寻找道路" class="headerlink" title="寻找道路"></a>寻找道路</h1><p>标签（空格分隔）： 未分类</p>
-<hr>
+      <title><![CDATA[寻找道路]]></title>
+      <url>/2018/10/23/2296/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P2296" target="_blank" rel="external">题目链接</a></p>
 <p>在有向图 G 中，每条边的长度均为 1，现给定起点和终点，请你在图中找一条从起点到终点的路径，该路径满足以下条件：</p>
 <ul>
 <li>路径上的所有点的出边所指向的点都直接或间接与终点连通。 在满足条件1的情况下使路径最短。</li>
@@ -51,6 +50,18 @@
 <p>如上图所示，满足条件的路径为1- &gt;3- &gt;4- &gt;5。注意点2不能在答案路径中，因为点2连了一条边到点6，而点6不与终点5连通</p>
 ]]></content>
       
+        <categories>
+            
+            <category> OI </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 图论 </tag>
+            
+        </tags>
         
     </entry>
     
