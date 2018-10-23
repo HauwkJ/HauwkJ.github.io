@@ -3,8 +3,98 @@
   
     
     <entry>
+      <title><![CDATA[「初等数论初步」素数及其判别法]]></title>
+      <url>/2018/10/23/%E3%80%8C%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA%E5%88%9D%E6%AD%A5%E3%80%8D%E7%B4%A0%E6%95%B0%E5%8F%8A%E5%85%B6%E5%88%A4%E5%88%AB%E6%B3%95/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p><strong>素数：仅有两个正因数的正整数，即为正因数只有1和本身的数，也称质数</strong></p>
+<p><strong>合数：不是素数又不是1的正整数</strong></p>
+<ul>
+<li>1既不是素数(只有一个正因子)，也不是合数.</li>
+<li>2是唯一的偶素数，也是最小的素数.</li>
+</ul>
+<p><strong> 我们发现，每个正整数x除1外的最小正因数p是一个素数</strong></p>
+<p>证明：如果p不是一个素数的话，那么p必定有除1、p以外的正因数q，使得 q|p, 那么q|x, 那么q是x的比p小的正因数，所以p就不是x的最小正因数了，与已知矛盾.</p>
+<p>判断一个数x是不是素数，只需要判断到sqrt(x)即可，因为如果x是一个合数，那么在[2, sqrt(x)]中的因数q，一定有一个[sqrt(x), x]中的因数p与其对应，使得p*q == n，且sqrt(x)^2 == n;</p>
+<p><strong>如果大于1的整数a不能被所有不超过sqrt(a)的素数整除, 那么a一定是素数.</strong></p>
+<p> 所以用代码判定一个数是不是素数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//试除法 O(根号n)</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">primer</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++) &#123;</div><div class="line">        <span class="keyword">if</span>(n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>埃拉托斯特尼（Eratosthenes）筛法</strong>–埃筛</p>
+<p>例题：找出1~100以内的全部素数.</p>
+<p>做法：只需要把1~100以内的合数去掉即可，对于1~100以内的每个合数，他一定能被某个不超过sqrt(x)的整数整除，从而能被不超过sqrt(100) = 10的整数整除。我们只需要把不超过10的素数（2， 3， 5， 7）除其本身以外的倍数以及1去掉，剩下的就是不超过100的全部素数。这种寻求素数的方法叫做<strong>埃拉托斯特尼(Eratosthenes)筛法</strong>即 <strong>埃筛</strong>.</p>
+<p><strong>先找sqrt(n)以内的素数，然后倍数增长标记.</strong></p>
+<p>附上埃筛代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//埃筛 o(NloglogN) 接近线性</span></div><div class="line"><span class="keyword">bool</span> v[n_max + <span class="number">1</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">primer</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">if</span>(v[i]) <span class="keyword">continue</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, i);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= n/i; j++) &#123;</div><div class="line">            v[i*j] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>线性筛法</strong><br>线性筛法是一种O(n)的算法，但是代码复杂度较高，不易考场书写，其实埃筛就已经完全够用，它已经接近线性了，所以<strong>考场书写推荐埃筛</strong>！这里就不进行线性筛法的讲解了，有兴趣的同学可以自行网上搜索学习，附上代码吧：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//线性筛法 o(n) 写法较难 用埃筛就可以了</span></div><div class="line"><span class="keyword">int</span> v[N_MAX], prime[N_MAX];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">primer</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v)); <span class="comment">//最小质因子;</span></div><div class="line">    m = <span class="number">0</span>; <span class="comment">//质数数量;</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">if</span>(v[i] == <span class="number">0</span>) &#123;v[i] == i; prime[++m] = i;&#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(prime[j] &gt; v[i] || prime[j] &gt; n/i) <span class="keyword">break</span>;</div><div class="line">            v[i * prime[j]] = prime[j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, prime[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> OI </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数论 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[「NOIP2015」信息传递]]></title>
+      <url>/2018/10/23/1979/</url>
+      <content type="html"><![CDATA[<p><strong>使用拓扑求最大环长度；</strong></p>
+<p><a href="https://vijos.org/p/1979" target="_blank" rel="external">题目链接</a></p>
+<p>有 n 个同学（编号为 1 到 n）正在玩一个信息传递的游戏。在游戏里每人都有一个固定的信息传递对象，其中，编号为 i 的同学的信息传递对象是编号为 T_i 的同学。</p>
+<p>游戏开始时，每人都只知道自己的生日。之后每一轮中，所有人会同时将自己当前所知的生日信息告诉各自的信息传递对象（注意：可能有人可以从若干人那里获取信息， 但是每人只会把信息告诉一个人，即自己的信息传递对象）。当有人从别人口中得知自己的生日时，游戏结束。请问该游戏一共可以进行几轮？</p>
+<a id="more"></a>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p><strong>输入格式</strong><br>输入共 2 行。</p>
+<p>第 1 行包含 1 个正整数 n，表示 n 个人。</p>
+<p>第 2 行包含 n 个用空格隔开的正整数 T_1T , T_2T, … … , T_nT，其中第 i 个整数T_iT 表示编号为 i 的同学的信息传递对象是编号为 T_iT<br>T_iT≤ n 且 T_iT ≠ i。</p>
+<p>数据保证游戏一定会结束。</p>
+<p><strong>输出格式</strong><br>输出共 1 行，包含 1 个整数，表示游戏一共可以进行多少轮。</p>
+<p><strong>样例1</strong><br>样例输入1</p>
+<blockquote>
+<p>5<br>2 4 2 3 1</p>
+</blockquote>
+<p>样例输出1</p>
+<blockquote>
+<p>3</p>
+</blockquote>
+<p><strong>限制</strong><br>对于 30%的数据， n ≤ 200；</p>
+<p>对于 60%的数据，n ≤ 2500；</p>
+<p>对于 100%的数据，n ≤ 200000。</p>
+<p>提示<br>【输入输出样例 1 说明】</p>
+<p><img src="https://cdn.vijos.org/fs/39caebb96fd97d7553ff6594f450bbd4e37624b9" alt="此处输入图片的描述"></p>
+<p>游戏的流程如图所示。当进行完第 3 轮游戏后，4 号玩家会听到 2 号玩家告诉他自己的生日，所以答案为 3。当然，第 3 轮游戏后，2 号玩家、3 号玩家都能从自己的消息来源得知自己的生日，同样符合游戏结束的条件。</p>
+<p><strong>来源</strong><br>NOIP 2015 提高组 Day 1 第二题</p>
+<hr>
+<p>  读完这道题之后，我们想一下，有对象关系， 有传递关系，那么我们就可以把信息存到一份图里！&gt; . &lt;</p>
+<p>  存完图之后，思考一下，如果自己的生日信息能传回自己，那么他就存在于一个环里（注意:图中可能存在多个环）。我们首先用拓扑把不在环上的点打上标记，然后再求所有环中的 <strong>最长环的长度</strong>，就是游戏可进行的最大轮数了。问题解决了！</p>
+<p>  本题是有向图，我们使用拓扑来解决问题；</p>
+<p>  附上代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) std::cerr &lt;&lt; #x &lt;&lt; <span class="meta-string">" = "</span> &lt;&lt; x &lt;&lt;std::endl</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> max(x, y) ((x) &gt; (y) ? x : y)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">char</span> ch = getchar(); <span class="keyword">int</span> res = <span class="number">0</span>; <span class="keyword">int</span> flag = <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(; !<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) flag = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">for</span>(; <span class="built_in">isdigit</span>(ch); ch = getchar()) res = (res &lt;&lt; <span class="number">3</span>) + (res &lt;&lt; <span class="number">1</span>) + ch - <span class="string">'0'</span>;</div><div class="line">	<span class="keyword">return</span> (res * flag);</div><div class="line">&#125;<span class="comment">//快读</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n, ans, tot, ver[<span class="number">200007</span>], per[<span class="number">200007</span>];</div><div class="line"><span class="comment">//ver[]数组存储“父亲”数量</span></div><div class="line"><span class="comment">//per[]数组存储传递对象</span></div><div class="line"><span class="keyword">bool</span> vis[<span class="number">200007</span>];<span class="comment">//为节点打标记</span></div><div class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;que;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	ans = <span class="number">0x7fffffff</span>;</div><div class="line">	tot = <span class="number">0x7fffffff</span>;</div><div class="line">	n = read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">int</span> x = read();</div><div class="line">		per[i] = x;</div><div class="line">		ver[x] ++;</div><div class="line">	&#125; </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(ver[i] == <span class="number">0</span>) &#123;</div><div class="line">			vis[i] = <span class="number">1</span>;</div><div class="line">			que.push(i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">while</span>(!que.empty()) &#123;</div><div class="line">		<span class="keyword">int</span> cnt = que.front();</div><div class="line">		que.pop();</div><div class="line">		ver[per[cnt]] --;</div><div class="line">		<span class="keyword">if</span>(ver[per[cnt]] == <span class="number">0</span>) &#123;</div><div class="line">			vis[per[cnt]] = <span class="number">1</span>;</div><div class="line">			que.push(per[cnt]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//为所有不在环上的点打上标记</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(vis[i] == <span class="number">0</span> &amp;&amp; ver[i] != <span class="number">0</span>) &#123;</div><div class="line">			vis[i] = <span class="number">1</span>;</div><div class="line">			tot = <span class="number">1</span>;</div><div class="line">			<span class="keyword">int</span> j = per[i];</div><div class="line">			<span class="keyword">while</span>(!vis[j]) &#123;</div><div class="line">				vis[j] = <span class="number">1</span>;<span class="comment">//每个点只有唯一一个传递对象，所以它只存在于一个环上，所以在此时遍历到它，便可以直接打上标记；</span></div><div class="line">				j = per[j];</div><div class="line">				tot ++;<span class="comment">//记录此环的长度</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(tot &lt; ans) ans = tot;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//求最长环长度</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> OI </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 图论 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[「NOIP2014」寻找道路]]></title>
-      <url>/2018/10/23/2296/</url>
+      <url>/2018/10/22/2296/</url>
       <content type="html"><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P2296" target="_blank" rel="external">题目链接</a></p>
 <p>在有向图 G 中，每条边的长度均为 1，现给定起点和终点，请你在图中找一条从起点到终点的路径，该路径满足以下条件：</p>
 <ul>
@@ -57,57 +147,6 @@
 <p>我们把和终点（正常图）不连接的点找到了，下一步，我们就去找图（正常图）中出边与这些点直接相连的点，打上标记，表明这些点是不可出现在题目中要求的最短路径中的；node[N_MAX] 、vis[N_MAX]；</p>
 <p>把去点操作完成之后， 忽然发现，既然只要输出最短路径长度即可，那么反图和正常图跑出来的结果就是一样的！okay,直接在之前建好的反图上面再跑一边dijkstra，问题解决了！上代码！</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"> </div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) std::cerr &lt;&lt; #x &lt;&lt; <span class="meta-string">" = "</span> &lt;&lt; x &lt;&lt; std::endl</span></div><div class="line"><span class="comment">//DEBUG时用的操作</span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">char</span> ch = getchar(); <span class="keyword">int</span> res = <span class="number">0</span>; <span class="keyword">int</span> flag = <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(; !<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) flag = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">for</span>(; <span class="built_in">isdigit</span>(ch); ch = getchar()) res = (res &lt;&lt; <span class="number">3</span>) + (res &lt;&lt; <span class="number">1</span>) + ch - <span class="string">'0'</span>;</div><div class="line">	<span class="keyword">return</span> (res * flag);</div><div class="line">&#125;<span class="comment">//快读</span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N_MAX = <span class="number">10000</span> + <span class="number">7</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> M_MAX = <span class="number">200000</span> + <span class="number">7</span>;</div><div class="line"><span class="keyword">int</span> n, m, num, head[N_MAX], dist[N_MAX], ans, tot, start, endd;</div><div class="line"><span class="keyword">bool</span> vis[N_MAX];<span class="comment">//判断某个点是否符合条件2；</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;vec;</div><div class="line">&#125;node[N_MAX];<span class="comment">//储存和终点不相连的点的“父亲”；</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> to, w, next, from;</div><div class="line">&#125;edge[M_MAX];</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> w)</span> </span>&#123;</div><div class="line">	edge[++num].to = to;</div><div class="line">	edge[num].from = from;</div><div class="line">	edge[num].w = w;</div><div class="line">	edge[num].next = head[from];</div><div class="line">	head[from] = num;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Dist</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> x, dist;</div><div class="line">	Dist(<span class="keyword">int</span> x = <span class="number">0</span>, <span class="keyword">int</span> dist = INF) : x(x), dist(dist) &#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(Dist l, Dist r)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> l.dist &gt; r.dist;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">priority_queue &lt;Dist, <span class="built_in">vector</span>&lt;Dist&gt;, Dist&gt; que;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		dist[i] = INF;</div><div class="line">	&#125;</div><div class="line">	dist[start] = <span class="number">0</span>;</div><div class="line">	que.push(Dist(start, <span class="number">0</span>));</div><div class="line">	<span class="keyword">while</span>(!que.empty()) &#123;</div><div class="line">		Dist tmp = que.top();</div><div class="line">		que.pop();</div><div class="line">		<span class="keyword">if</span>(vis[tmp.x]) <span class="keyword">continue</span>;<span class="comment">//如何这个点非法，即不满足条件2；</span></div><div class="line">		<span class="keyword">if</span>(dist[tmp.x] != tmp.dist) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = head[tmp.x]; j; j = edge[j].next) &#123;</div><div class="line">			<span class="keyword">if</span>(dist[edge[j].to] &gt; dist[edge[j].from] + edge[j].w) &#123;</div><div class="line">				dist[edge[j].to] = dist[edge[j].from] + edge[j].w;</div><div class="line">				que.push(Dist(edge[j].to, dist[edge[j].to]));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	n = read(); m = read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">int</span> x = read(), y = read();</div><div class="line">		add_edge(y, x, <span class="number">1</span>);<span class="comment">//建反图；</span></div><div class="line">		node[y].vec.push_back(x);<span class="comment">//存“父亲”；</span></div><div class="line">	&#125;</div><div class="line">	endd = read(); start = read();<span class="comment">//倒跑最短路；</span></div><div class="line">	dijkstra();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(dist[i] == INF) &#123;</div><div class="line">			vis[i] = <span class="number">1</span>;</div><div class="line">			<span class="keyword">while</span>(node[i].vec.size()) &#123;</div><div class="line">				vis[node[i].vec.back()] = <span class="number">1</span>;</div><div class="line">				node[i].vec.pop_back();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;<span class="comment">//判断不合法的点集；</span></div><div class="line">	dijkstra();</div><div class="line">	<span class="keyword">int</span> t = dist[endd];</div><div class="line">	<span class="keyword">if</span>(t == INF) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, t);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> OI </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 图论 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[「NOIP2015」信息传递]]></title>
-      <url>/2018/10/23/1979/</url>
-      <content type="html"><![CDATA[<p><strong>使用拓扑求最大环长度；</strong></p>
-<p><a href="https://vijos.org/p/1979" target="_blank" rel="external">题目链接</a></p>
-<p>有 n 个同学（编号为 1 到 n）正在玩一个信息传递的游戏。在游戏里每人都有一个固定的信息传递对象，其中，编号为 i 的同学的信息传递对象是编号为 T_i 的同学。</p>
-<p>游戏开始时，每人都只知道自己的生日。之后每一轮中，所有人会同时将自己当前所知的生日信息告诉各自的信息传递对象（注意：可能有人可以从若干人那里获取信息， 但是每人只会把信息告诉一个人，即自己的信息传递对象）。当有人从别人口中得知自己的生日时，游戏结束。请问该游戏一共可以进行几轮？</p>
-<a id="more"></a>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p><strong>输入格式</strong><br>输入共 2 行。</p>
-<p>第 1 行包含 1 个正整数 n，表示 n 个人。</p>
-<p>第 2 行包含 n 个用空格隔开的正整数 T_1T , T_2T, … … , T_nT，其中第 i 个整数T_iT 表示编号为 i 的同学的信息传递对象是编号为 T_iT<br>T_iT≤ n 且 T_iT ≠ i。</p>
-<p>数据保证游戏一定会结束。</p>
-<p><strong>输出格式</strong><br>输出共 1 行，包含 1 个整数，表示游戏一共可以进行多少轮。</p>
-<p><strong>样例1</strong><br>样例输入1</p>
-<blockquote>
-<p>5<br>2 4 2 3 1</p>
-</blockquote>
-<p>样例输出1</p>
-<blockquote>
-<p>3</p>
-</blockquote>
-<p><strong>限制</strong><br>对于 30%的数据， n ≤ 200；</p>
-<p>对于 60%的数据，n ≤ 2500；</p>
-<p>对于 100%的数据，n ≤ 200000。</p>
-<p>提示<br>【输入输出样例 1 说明】</p>
-<p><img src="https://cdn.vijos.org/fs/39caebb96fd97d7553ff6594f450bbd4e37624b9" alt="此处输入图片的描述"></p>
-<p>游戏的流程如图所示。当进行完第 3 轮游戏后，4 号玩家会听到 2 号玩家告诉他自己的生日，所以答案为 3。当然，第 3 轮游戏后，2 号玩家、3 号玩家都能从自己的消息来源得知自己的生日，同样符合游戏结束的条件。</p>
-<p><strong>来源</strong><br>NOIP 2015 提高组 Day 1 第二题</p>
-<hr>
-<p>  读完这道题之后，我们想一下，有对象关系， 有传递关系，那么我们就可以把信息存到一份图里！&gt; . &lt;</p>
-<p>  存完图之后，思考一下，如果自己的生日信息能传回自己，那么他就存在于一个环里（注意:图中可能存在多个环）。我们首先用拓扑把不在环上的点打上标记，然后再求所有环中的 <strong>最长环的长度</strong>，就是游戏可进行的最大轮数了。问题解决了！</p>
-<p>  本题是有向图，我们使用拓扑来解决问题；</p>
-<p>  附上代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) std::cerr &lt;&lt; #x &lt;&lt; <span class="meta-string">" = "</span> &lt;&lt; x &lt;&lt;std::endl</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> max(x, y) ((x) &gt; (y) ? x : y)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">char</span> ch = getchar(); <span class="keyword">int</span> res = <span class="number">0</span>; <span class="keyword">int</span> flag = <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(; !<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) flag = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">for</span>(; <span class="built_in">isdigit</span>(ch); ch = getchar()) res = (res &lt;&lt; <span class="number">3</span>) + (res &lt;&lt; <span class="number">1</span>) + ch - <span class="string">'0'</span>;</div><div class="line">	<span class="keyword">return</span> (res * flag);</div><div class="line">&#125;<span class="comment">//快读</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n, ans, tot, ver[<span class="number">200007</span>], per[<span class="number">200007</span>];</div><div class="line"><span class="comment">//ver[]数组存储“父亲”数量</span></div><div class="line"><span class="comment">//per[]数组存储传递对象</span></div><div class="line"><span class="keyword">bool</span> vis[<span class="number">200007</span>];<span class="comment">//为节点打标记</span></div><div class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;que;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	ans = <span class="number">0x7fffffff</span>;</div><div class="line">	tot = <span class="number">0x7fffffff</span>;</div><div class="line">	n = read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">int</span> x = read();</div><div class="line">		per[i] = x;</div><div class="line">		ver[x] ++;</div><div class="line">	&#125; </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(ver[i] == <span class="number">0</span>) &#123;</div><div class="line">			vis[i] = <span class="number">1</span>;</div><div class="line">			que.push(i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">while</span>(!que.empty()) &#123;</div><div class="line">		<span class="keyword">int</span> cnt = que.front();</div><div class="line">		que.pop();</div><div class="line">		ver[per[cnt]] --;</div><div class="line">		<span class="keyword">if</span>(ver[per[cnt]] == <span class="number">0</span>) &#123;</div><div class="line">			vis[per[cnt]] = <span class="number">1</span>;</div><div class="line">			que.push(per[cnt]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//为所有不在环上的点打上标记</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(vis[i] == <span class="number">0</span> &amp;&amp; ver[i] != <span class="number">0</span>) &#123;</div><div class="line">			vis[i] = <span class="number">1</span>;</div><div class="line">			tot = <span class="number">1</span>;</div><div class="line">			<span class="keyword">int</span> j = per[i];</div><div class="line">			<span class="keyword">while</span>(!vis[j]) &#123;</div><div class="line">				vis[j] = <span class="number">1</span>;<span class="comment">//每个点只有唯一一个传递对象，所以它只存在于一个环上，所以在此时遍历到它，便可以直接打上标记；</span></div><div class="line">				j = per[j];</div><div class="line">				tot ++;<span class="comment">//记录此环的长度</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(tot &lt; ans) ans = tot;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//求最长环长度</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -253,6 +292,29 @@
     </entry>
     
     <entry>
+      <title><![CDATA[字符串STL]]></title>
+      <url>/2017/10/22/%E5%AD%97%E7%AC%A6%E4%B8%B2STL/</url>
+      <content type="html"><![CDATA[<p>参考 （侵权必删）： <a href="http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml" target="_blank" rel="external">http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml</a></p>
+<p><a href="http://blog.csdn.net/f_c_g_/article/details/51228909" target="_blank" rel="external">http://blog.csdn.net/f_c_g_/article/details/51228909</a></p>
+<p>dalao们总结的够好了， 我就做一个传播者咯(ง •_•)ง<br><a id="more"></a>          </p>
+]]></content>
+      
+        <categories>
+            
+            <category> OI </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> STL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[「codevs2370」LCA-倍增]]></title>
       <url>/2017/10/22/2370/</url>
       <content type="html"><![CDATA[<p><a href="http://codevs.cn/problem/2370/" target="_blank" rel="external">题目链接</a></p>
@@ -305,29 +367,6 @@
         <tags>
             
             <tag> 图论 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[字符串STL]]></title>
-      <url>/2017/10/22/%E5%AD%97%E7%AC%A6%E4%B8%B2STL/</url>
-      <content type="html"><![CDATA[<p>参考 （侵权必删）： <a href="http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml" target="_blank" rel="external">http://www.360doc.com/content/10/1006/18/1704901_58868298.shtml</a></p>
-<p><a href="http://blog.csdn.net/f_c_g_/article/details/51228909" target="_blank" rel="external">http://blog.csdn.net/f_c_g_/article/details/51228909</a></p>
-<p>dalao们总结的够好了， 我就做一个传播者咯(ง •_•)ง<br><a id="more"></a>          </p>
-]]></content>
-      
-        <categories>
-            
-            <category> OI </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> STL </tag>
             
         </tags>
         
