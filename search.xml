@@ -3,6 +3,58 @@
   
     
     <entry>
+      <title></title>
+      <url>/2018/10/23/%E5%AF%BB%E6%89%BE%E9%81%93%E8%B7%AF/</url>
+      <content type="html"><![CDATA[<h1 id="寻找道路"><a href="#寻找道路" class="headerlink" title="寻找道路"></a>寻找道路</h1><p>标签（空格分隔）： 未分类</p>
+<hr>
+<p>在有向图 G 中，每条边的长度均为 1，现给定起点和终点，请你在图中找一条从起点到终点的路径，该路径满足以下条件：</p>
+<ul>
+<li>路径上的所有点的出边所指向的点都直接或间接与终点连通。 在满足条件1的情况下使路径最短。</li>
+<li>注意：图 G 中可能存在重边和自环，题目保证终点没有出边。</li>
+</ul>
+<p>请你输出符合条件的路径的长度。</p>
+<p><strong>输入输出格式</strong><br><strong>输入格式：</strong></p>
+<p>第一行有两个用一个空格隔开的整数 n 和 m，表示图有 n 个点和 m 条边。</p>
+<p>接下来的 m 行每行 2 个整数 x,y，之间用一个空格隔开，表示有一条边从点 x 指向点y。</p>
+<p>最后一行有两个用一个空格隔开的整数 s,t，表示起点为 s，终点为 t。</p>
+<p><strong>输出格式</strong>：</p>
+<p>输出只有一行，包含一个整数，表示满足题目描述的最短路径的长度。如果这样的路径不存在，输出−1。</p>
+<p><strong>输入输出样例</strong><br><strong>输入样例#1：</strong> </p>
+<blockquote>
+<p>3 2</p>
+<p>1 2</p>
+<p>2 1</p>
+<p>1 3</p>
+</blockquote>
+<p><strong>输出样例#1：</strong> </p>
+<blockquote>
+<p>-1</p>
+</blockquote>
+<p><strong>输入样例#2：</strong> </p>
+<blockquote>
+<p>6 6</p>
+<p>1 2</p>
+<p>1 3</p>
+<p>2 6</p>
+<p>2 5</p>
+<p>4 5</p>
+<p>3 4</p>
+<p>1 5</p>
+</blockquote>
+<p><strong>输出样例#2：</strong> </p>
+<blockquote>
+<p>3</p>
+</blockquote>
+<p><strong>说明</strong><br>解释1：</p>
+<p>如上图所示，箭头表示有向道路，圆点表示城市。起点11与终点33不连通，所以满足题目描述的路径不存在，故输出−1 。</p>
+<p>解释2：</p>
+<p>如上图所示，满足条件的路径为1- &gt;3- &gt;4- &gt;5。注意点2不能在答案路径中，因为点2连了一条边到点6，而点6不与终点5连通</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Bellman Ford]]></title>
       <url>/2018/07/26/Bellman%20Ford/</url>
       <content type="html"><![CDATA[<p>Bellman Ford同样是一种单源最短路算法，它的优秀之出在于它可以处理带有负边权的图，我们先来看看核心代码：</p>
