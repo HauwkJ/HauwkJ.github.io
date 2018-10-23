@@ -14,7 +14,7 @@
 <p><strong> 我们发现，每个正整数x除1外的最小正因数p是一个素数</strong></p>
 <a id="more"></a>
 <p>证明：如果p不是一个素数的话，那么p必定有除1、p以外的正因数q，使得 q|p, 那么q|x, 那么q是x的比p小的正因数，所以p就不是x的最小正因数了，与已知矛盾.</p>
-<p>判断一个数x是不是素数，只需要判断到sqrt(x)即可，因为如果x是一个合数，那么在[2, sqrt(x)]中的因数q，一定有一个[sqrt(x), x]中的因数p与其对应，使得p*q == n，且sqrt(x)^2 == n;</p>
+<p>判断一个数x是不是素数，只需要判断到sqrt(x)即可，因为如果x是一个合数，那么在（1, sqrt(x)]中的因数q，一定有一个[sqrt(x), x）中的因数p与其对应，使得p*q == n，且sqrt(x)^2 == n;</p>
 <p><strong>如果大于1的整数a不能被所有不超过sqrt(a)的素数整除, 那么a一定是素数.</strong></p>
 <p> 所以用代码判定一个数是不是素数：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//试除法 O(根号n)</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">primer</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++) &#123;</div><div class="line">        <span class="keyword">if</span>(n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
