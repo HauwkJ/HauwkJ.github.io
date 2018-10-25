@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数论," />
+  <meta name="keywords" content="数据结构," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="素数：仅有两个正因数的正整数，即为正因数只有1和本身的数，也称质数 合数：不是素数又不是1的正整数  1既不是素数(只有一个正因子)，也不是合数. 2是唯一的偶素数，也是最小的素数.   我们发现，每个正整数x除1外的最小正因数p是一个素数">
-<meta name="keywords" content="数论">
+<meta name="description" content="树状数组的基本用途是维护序列的前缀和 树状数组支持的基本操作：  查询前缀和 单点修改 查询区间的最大值  lowbit运算讲解">
+<meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「初等数论初步」素数及其判别法">
-<meta property="og:url" content="https://hauwkj.github.io/2018/10/23/「初等数论初步」素数及其判别法/index.html">
+<meta property="og:title" content="树状数组">
+<meta property="og:url" content="https://hauwkj.github.io/2018/10/25/树状数组/index.html">
 <meta property="og:site_name" content="Hauwk&#39;s Blog">
-<meta property="og:description" content="素数：仅有两个正因数的正整数，即为正因数只有1和本身的数，也称质数 合数：不是素数又不是1的正整数  1既不是素数(只有一个正因子)，也不是合数. 2是唯一的偶素数，也是最小的素数.   我们发现，每个正整数x除1外的最小正因数p是一个素数">
+<meta property="og:description" content="树状数组的基本用途是维护序列的前缀和 树状数组支持的基本操作：  查询前缀和 单点修改 查询区间的最大值  lowbit运算讲解">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-23T23:48:22.847Z">
+<meta property="og:updated_time" content="2018-10-25T05:12:37.495Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「初等数论初步」素数及其判别法">
-<meta name="twitter:description" content="素数：仅有两个正因数的正整数，即为正因数只有1和本身的数，也称质数 合数：不是素数又不是1的正整数  1既不是素数(只有一个正因子)，也不是合数. 2是唯一的偶素数，也是最小的素数.   我们发现，每个正整数x除1外的最小正因数p是一个素数">
+<meta name="twitter:title" content="树状数组">
+<meta name="twitter:description" content="树状数组的基本用途是维护序列的前缀和 树状数组支持的基本操作：  查询前缀和 单点修改 查询区间的最大值  lowbit运算讲解">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hauwkj.github.io/2018/10/23/「初等数论初步」素数及其判别法/"/>
+  <link rel="canonical" href="https://hauwkj.github.io/2018/10/25/树状数组/"/>
 
 
 
 
 
-  <title>「初等数论初步」素数及其判别法 | Hauwk's Blog</title>
+  <title>树状数组 | Hauwk's Blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2018/10/23/「初等数论初步」素数及其判别法/">
+    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2018/10/25/树状数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hauwk">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">「初等数论初步」素数及其判别法</h1>
+          <h1 class="post-title" itemprop="name headline">树状数组</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T00:00:00+08:00">
-                2018-10-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T00:00:00+08:00">
+                2018-10-25
               </time>
             
 
@@ -352,25 +352,25 @@
       
 
       
-        <p><strong>素数：仅有两个正因数的正整数，即为正因数只有1和本身的数，也称质数</strong></p>
-<p><strong>合数：不是素数又不是1的正整数</strong></p>
+        <p>树状数组的基本用途是<strong>维护序列的前缀和</strong></p>
+<p>树状数组支持的<strong>基本操作</strong>：</p>
 <ul>
-<li>1既不是素数(只有一个正因子)，也不是合数.</li>
-<li>2是唯一的偶素数，也是最小的素数.</li>
+<li>查询前缀和</li>
+<li>单点修改</li>
+<li>查询区间的最大值</li>
 </ul>
-<p><strong> 我们发现，每个正整数x除1外的最小正因数p是一个素数</strong></p>
+<p><strong>lowbit运算讲解</strong></p>
 <a id="more"></a>
-<p>证明：如果p不是一个素数的话，那么p必定有除1、p以外的正因数q，使得 q|p, 那么q|x, 那么q是x的比p小的正因数，所以p就不是x的最小正因数了，与已知矛盾.</p>
-<p>判断一个数x是不是素数，只需要判断到sqrt(x)即可，因为如果x是一个合数，那么在（1, sqrt(x)]中的因数q，一定有一个[sqrt(x), x）中的因数p与其对应，使得p*q == n，且sqrt(x)^2 == n;</p>
-<p><strong>如果大于1的整数a不能被所有不超过sqrt(a)的素数整除, 那么a一定是素数.</strong></p>
-<p> 所以用代码判定一个数是不是素数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//试除法 O(根号n)</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">primer</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++) &#123;</div><div class="line">        <span class="keyword">if</span>(n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>埃拉托斯特尼（Eratosthenes）筛法</strong>–埃筛</p>
-<p>例题：找出1~100以内的全部素数.</p>
-<p>做法：只需要把1~100以内的合数去掉即可，对于1~100以内的每个合数，他一定能被某个不超过sqrt(x)的整数整除，从而能被不超过sqrt(100) = 10的整数整除。我们只需要把不超过10的素数（2， 3， 5， 7）除其本身以外的倍数以及1去掉，剩下的就是不超过100的全部素数。这种寻求素数的方法叫做<strong>埃拉托斯特尼(Eratosthenes)筛法</strong>即 <strong>埃筛</strong>.</p>
-<p><strong>先找sqrt(n)以内的素数，然后倍数增长标记.</strong></p>
-<p>附上埃筛代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//埃筛 O(NloglogN) 接近线性</span></div><div class="line"><span class="keyword">bool</span> v[n_max + <span class="number">1</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">primer</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">if</span>(v[i]) <span class="keyword">continue</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, i);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= n/i; j++) &#123;</div><div class="line">            v[i*j] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>线性筛法</strong><br>线性筛法是一种O(n)的算法，但是代码复杂度较高，不易考场书写，其实埃筛就已经完全够用，它已经接近线性了，所以<strong>考场书写推荐埃筛</strong>！这里就不进行线性筛法的讲解了，有兴趣的同学可以自行网上搜索学习，附上代码吧：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//线性筛法 O(n) 写法较难 用埃筛就可以了</span></div><div class="line"><span class="keyword">int</span> v[N_MAX], prime[N_MAX];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">primer</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v)); <span class="comment">//最小质因子;</span></div><div class="line">    m = <span class="number">0</span>; <span class="comment">//质数数量;</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        <span class="keyword">if</span>(v[i] == <span class="number">0</span>) &#123;v[i] == i; prime[++m] = i;&#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</div><div class="line">            <span class="keyword">if</span>(prime[j] &gt; v[i] || prime[j] &gt; n/i) <span class="keyword">break</span>;</div><div class="line">            v[i * prime[j]] = prime[j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, prime[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>lowbit(n)定义为非负整数n在二进制表示下“最低位的1及后面所有的0”构成的数值。例如n=10的二进制表示为1010，则lowbit(10) = 2。下面我们来推导lowbit(n)公式的推导:</p>
+<pre><code>设n&gt;0，n的第k位是1，第0~k-1位都是0
+
+为了实现lowbit运算，先把n取反，此时第k位变为0，第0~k-1位都是1。再令n=n+1，此时因为进位，第k位变为1，第0~k-1位都是0。
+
+在上面的取反加1操作后，n的第k+1位到最高位恰好与原来相反，所以 n&amp;(~n+1)仅有第k位为1，其余为都是0，而在补码表示下，~n=-1-n，因此：
+
+                    lowbit(n) = n &amp; (~n + 1) = n &amp; (-n)
+</code></pre><p>附上线段树模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> max(x, y) ((x) &gt; (y) ? (x) : (y))</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n, m, tree[<span class="number">100000</span> + <span class="number">5</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> x &amp; -x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> a)</span> </span>&#123;</div><div class="line">	<span class="keyword">while</span>(k &lt;= n) &#123;</div><div class="line">		tree[k] += a;</div><div class="line">		k += lowbit(k);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(k) &#123;</div><div class="line">		sum += tree[k];</div><div class="line">		k -= lowbit(k);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> sum;</div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getmax</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> ans = tree[r];</div><div class="line">	<span class="keyword">while</span>(l &lt;= r) &#123;</div><div class="line">		ans = max(ans, tree[r]);</div><div class="line">		<span class="keyword">for</span>(--r; r - l &gt;= lowbit(r); r -= lowbit(r)) &#123;</div><div class="line">			ans = max(ans, tree[r]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">int</span> x; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</div><div class="line">		add(i, x);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">int</span> x, y, z;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</div><div class="line">		<span class="keyword">if</span>(x == <span class="number">1</span>) &#123;add(y, z);&#125;</div><div class="line">		<span class="keyword">else</span> &#123;<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, read(z) - read(y - <span class="number">1</span>));&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -388,7 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数论/" rel="tag"># 数论</a>
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
           
         </div>
       
@@ -401,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/22/2296/" rel="next" title="「NOIP2014」寻找道路">
-                <i class="fa fa-chevron-left"></i> 「NOIP2014」寻找道路
+              <a href="/2018/10/24/「较小值最大」赌注/" rel="next" title="「较小值最大」赌注">
+                <i class="fa fa-chevron-left"></i> 「较小值最大」赌注
               </a>
             
           </div>
@@ -410,10 +410,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/23/1979/" rel="prev" title="「NOIP2015」信息传递">
-                「NOIP2015」信息传递 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
