@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="STL," />
+  <meta name="keywords" content="模版," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="不定长数组vector是一个stl库中的容器；类似于数组，因其有不定长的特性，故在一些情况下可以节省空间； 调用vector需要挂头文件&amp;lt;vector&amp;gt;;还需要注明std；">
-<meta name="keywords" content="STL">
+<meta name="description" content="附上线段树模版">
+<meta name="keywords" content="模版">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vector-不定长数组">
-<meta property="og:url" content="https://hauwkj.github.io/2017/10/20/Vector-不定长数组/index.html">
+<meta property="og:title" content="「模版」线段树">
+<meta property="og:url" content="https://hauwkj.github.io/2018/11/02/「模版」线段树/index.html">
 <meta property="og:site_name" content="Hauwk&#39;s Blog">
-<meta property="og:description" content="不定长数组vector是一个stl库中的容器；类似于数组，因其有不定长的特性，故在一些情况下可以节省空间； 调用vector需要挂头文件&amp;lt;vector&amp;gt;;还需要注明std；">
+<meta property="og:description" content="附上线段树模版">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-31T11:47:24.052Z">
+<meta property="og:updated_time" content="2018-11-02T08:05:04.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vector-不定长数组">
-<meta name="twitter:description" content="不定长数组vector是一个stl库中的容器；类似于数组，因其有不定长的特性，故在一些情况下可以节省空间； 调用vector需要挂头文件&amp;lt;vector&amp;gt;;还需要注明std；">
+<meta name="twitter:title" content="「模版」线段树">
+<meta name="twitter:description" content="附上线段树模版">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hauwkj.github.io/2017/10/20/Vector-不定长数组/"/>
+  <link rel="canonical" href="https://hauwkj.github.io/2018/11/02/「模版」线段树/"/>
 
 
 
 
 
-  <title>Vector-不定长数组 | Hauwk's Blog</title>
+  <title>「模版」线段树 | Hauwk's Blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2017/10/20/Vector-不定长数组/">
+    <link itemprop="mainEntityOfPage" href="https://hauwkj.github.io/2018/11/02/「模版」线段树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hauwk">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vector-不定长数组</h1>
+          <h1 class="post-title" itemprop="name headline">「模版」线段树</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T00:00:00+08:00">
-                2017-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T00:00:00+08:00">
+                2018-11-02
               </time>
             
 
@@ -352,18 +352,9 @@
       
 
       
-        <p>不定长数组<strong>vector</strong>是一个<strong>stl</strong>库中的容器；类似于数组，因其有不定长的特性，故在<strong>一些情况下</strong>可以<strong>节省空间</strong>；</p>
-<p>调用vector需要挂头文件<code>&lt;vector&gt;</code>;<br>还需要注明<code>std</code>；</p>
+        <p>附上线段树模版</p>
 <a id="more"></a>
-<h4 id="常用用法"><a href="#常用用法" class="headerlink" title="常用用法"></a>常用用法</h4><p>·我们先来定义一个int型的vector数组： <code>vector &lt;int&gt; vec</code></p>
-<p>·新增元素i至数组尾部：<code>vec.push_back(i)</code></p>
-<p>·删除数组尾部的元素：<code>vec.pop_back()</code></p>
-<p>·回传vector第一个元素的值：<code>vec.front()</code></p>
-<p>·回传vector数组最尾部元素的值：<code>vec.back()</code></p>
-<p>·存取索引值为i的元素值：<code>vec[i] 或者 vec.(i)</code>//前提是位置已开出</p>
-<p>·清空vector数组内的元素：<code>vec.clear()</code></p>
-<p>·判断数组是否为空(如果为空，返回true)：<code>vec.empty()</code> </p>
-<p>·获取vector数组目前拥有的元素个数：<code>vec.size()</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG(x) std::cerr &lt;&lt; #x &lt;&lt; <span class="meta-string">"="</span> &lt;&lt; x &lt;&lt; std::endl</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N_MAX = <span class="number">100007</span>;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></div><div class="line"><span class="class"><span class="title">struct</span> <span class="title">SegT</span>&#123;</span></div><div class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></div><div class="line">		<span class="keyword">int</span> l, r;</div><div class="line">		T sum, tag;</div><div class="line">	&#125;node[<span class="number">4</span> * N_MAX];</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lc</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> x &lt;&lt; <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">rc</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> x &lt;&lt; <span class="number">1</span> | <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x = <span class="number">1</span>)</span> </span>&#123;</div><div class="line">		node[x].l = l; node[x].r = r;</div><div class="line">		<span class="keyword">if</span>(l == r) <span class="keyword">return</span>;</div><div class="line">		<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</div><div class="line">		build(l, mid, lc(x));</div><div class="line">		build(mid + <span class="number">1</span>, r, rc(x));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x, T d)</span> </span>&#123;</div><div class="line">		node[x].tag += d;</div><div class="line">		node[x].sum += (node[x].r - node[x].l + <span class="number">1</span>) * d;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(node[x].tag) &#123;</div><div class="line">			update(lc(x), node[x].tag);</div><div class="line">			update(rc(x), node[x].tag);</div><div class="line">			node[x].tag = <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push_up</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">		node[x].sum = node[lc(x)].sum + node[rc(x)].sum;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, T d, <span class="keyword">int</span> x = <span class="number">1</span>)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(l &gt; node[x].r || r &lt; node[x].l) <span class="keyword">return</span>;</div><div class="line">		<span class="keyword">if</span>(l &lt;= node[x].l &amp;&amp; r &gt;= node[x].r) <span class="keyword">return</span> update(x, d);</div><div class="line">		push_down(x);</div><div class="line">		add(l, r, d, lc(x));</div><div class="line">		add(l, r, d, rc(x));</div><div class="line">		push_up(x);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function">T <span class="title">query</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x = <span class="number">1</span>)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(node[x].l &gt; r || node[x].r &lt; l) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span>(l &lt;= node[x].l &amp;&amp; r &gt;= node[x].r) <span class="keyword">return</span> node[x].sum;</div><div class="line">		<span class="keyword">return</span> push_down(x), query(l, r, lc(x)) + query(l, r, rc(x));</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">SegT&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;s;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> n, m;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">	s.build(<span class="number">1</span>, n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="keyword">int</span> x;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</div><div class="line">		s.add(i, i, x);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</div><div class="line">	<span class="keyword">while</span>(m --) &#123;</div><div class="line">		<span class="keyword">int</span> op;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;op); </div><div class="line">		<span class="keyword">if</span>(op == <span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">int</span> l, r, d;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;l, &amp;r, &amp;d);</div><div class="line">			s.add(l, r, d);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>( op == <span class="number">2</span>) &#123;</div><div class="line">			<span class="keyword">int</span> l, r;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;l, &amp;r);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, s.query(l, r));</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -381,7 +372,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/STL/" rel="tag"># STL</a>
+            <a href="/tags/模版/" rel="tag"># 模版</a>
           
         </div>
       
@@ -394,8 +385,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/19/1047/" rel="next" title="「codevs1047」DP + 搜索">
-                <i class="fa fa-chevron-left"></i> 「codevs1047」DP + 搜索
+              <a href="/2018/11/02/「模版」归并排序求逆序对/" rel="next" title="「模版」归并排序求逆序对">
+                <i class="fa fa-chevron-left"></i> 「模版」归并排序求逆序对
               </a>
             
           </div>
@@ -403,10 +394,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/22/字符串STL/" rel="prev" title="字符串STL">
-                字符串STL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -458,17 +445,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -534,22 +512,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用用法"><span class="nav-number">1.</span> <span class="nav-text">常用用法</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
